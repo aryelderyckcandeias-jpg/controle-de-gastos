@@ -1,1 +1,0 @@
-# aplicac-a-o-completa-de-controle-de-gastos
