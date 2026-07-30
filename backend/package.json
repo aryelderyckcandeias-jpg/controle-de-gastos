@@ -7,8 +7,10 @@
   "scripts": {
     "start": "node server.js"
   },
-  "dependencies": {
+ "dependencies": {
+    "connect-redis": "9.0.0",
     "express": "5.2.1",
+    "express-session": "1.19.0",
     "redis": "6.1.0"
   }
 }

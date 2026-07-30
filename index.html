@@ -1,40 +1,125 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="pt-BR">
 
 <head>
+    <meta charset="UTF-8">
 
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Controle de Gastos</title>
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="global.css">
 </head>
 
 <body>
-    <form>
-        <div class ="form-field">
-            <div><label>Email</label></div>
-            <input type="email" name="email" id="email" onchange="onChangeEmail()" placeholder="seu@email.com"/>
-            <div class="error" id="email-required-error">Email é obrigatório</div>
-            <div class="error" id="email-invalid-error">Email não é válido</div>
-        </div>
+    <form onsubmit="login(event)">
+        <h1>Controle de Gastos</h1>
+
+        <p class="study-user">
+            Usuário para estudo:<br>
+            <strong>aluno@email.com</strong><br>
+            <strong>Senha: 123456</strong>
+        </p>
+
         <div class="form-field">
-            <div><label>Senha</label></div>
-            <input type="password" name="password" id="password" onchange="onChangePassword()" placeholder="Senha"/>
-            <div class="error" id="password-required-error">Senha é obrigatória</div>
+            <div>
+                <label for="email">
+                    E-mail
+                </label>
+            </div>
+
+            <input
+                type="email"
+                name="email"
+                id="email"
+                oninput="onChangeEmail()"
+                placeholder="seu@email.com"
+                autocomplete="email"
+            >
+
+            <div
+                class="error"
+                id="email-required-error"
+            >
+                E-mail é obrigatório
+            </div>
+
+            <div
+                class="error"
+                id="email-invalid-error"
+            >
+                E-mail não é válido
+            </div>
         </div>
-        <div>
-            <button type="button" disabled="true" id="recover-password-button" class="clear">Recuperar senha</button>
+
+        <div class="form-field">
+            <div>
+                <label for="password">
+                    Senha
+                </label>
+            </div>
+
+            <input
+                type="password"
+                name="password"
+                id="password"
+                oninput="onChangePassword()"
+                placeholder="Senha"
+                autocomplete="current-password"
+            >
+
+            <div
+                class="error"
+                id="password-required-error"
+            >
+                Senha é obrigatória
+            </div>
         </div>
+
+        <div
+            id="login-message"
+            role="alert"
+        ></div>
+
         <div>
-            <button type="button" class="solid" id="login-button" disabled="true" onclick="login()">Entrar</button>
+            <button
+                type="button"
+                disabled
+                id="recover-password-button"
+                class="clear"
+            >
+                Recuperar senha
+            </button>
         </div>
+
         <div>
-            <button type="button" class="outline" onclick="register()">Registrar</button>
+            <button
+                type="submit"
+                class="solid"
+                id="login-button"
+                disabled
+            >
+                Entrar
+            </button>
+        </div>
+
+        <div>
+            <button
+                type="button"
+                class="outline"
+                onclick="register()"
+            >
+                Registrar
+            </button>
         </div>
     </form>
+
+    <script src="validations.js"></script>
+    <script src="index.js"></script>
 </body>
-
-<link rel="stylesheet" href="index.css"/>
-<link rel="stylesheet" href="global.css"/>
-
- <script src="index.js"></script>
- <script src="validations.js"></script>
 
 </html>

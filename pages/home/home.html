@@ -1,11 +1,152 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle de Gastos</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Home - Controle de Gastos</title>
+
+    <link rel="stylesheet" href="home.css">
 </head>
+
 <body>
-     HOME 
+    <main class="container">
+        <header class="page-header">
+    <div>
+        <h1>Controle de Gastos</h1>
+
+        <p>
+            Estudo prático de cache e sessões
+            com Redis
+        </p>
+    </div>
+
+    <div class="user-area">
+        <span id="user-information">
+            Verificando sessão...
+        </span>
+
+        <button
+            type="button"
+            id="logout-button"
+            class="logout-button"
+        >
+            Sair
+        </button>
+    </div>
+</header>
+
+        <section class="summary-card">
+            <div class="card-header">
+                <h2>Resumo dos gastos</h2>
+
+                <span
+                    id="cache-badge"
+                    class="cache-badge empty"
+                >
+                    Aguardando
+                </span>
+            </div>
+
+            <div class="values-grid">
+                <div class="value-box">
+                    <span class="value-label">
+                        Total de gastos
+                    </span>
+
+                    <strong id="total-gastos">
+                        R$ --
+                    </strong>
+                </div>
+
+                <div class="value-box">
+                    <span class="value-label">
+                        Quantidade de gastos
+                    </span>
+
+                    <strong id="quantidade-gastos">
+                        --
+                    </strong>
+                </div>
+            </div>
+
+            <div class="cache-details">
+                <p>
+                    <strong>Fonte:</strong>
+                    <span id="data-source">--</span>
+                </p>
+
+                <p>
+                    <strong>Tempo da resposta:</strong>
+                    <span id="response-time">--</span>
+                </p>
+
+                <p>
+                    <strong>Dados gerados em:</strong>
+                    <span id="generated-at">--</span>
+                </p>
+            </div>
+
+            <div
+                id="status-message"
+                class="status-message"
+                role="status"
+            >
+                Carregando os dados...
+            </div>
+
+            <div class="actions">
+                <button
+                    type="button"
+                    id="reload-button"
+                    class="primary-button"
+                >
+                    Consultar novamente
+                </button>
+
+                <button
+                    type="button"
+                    id="clear-cache-button"
+                    class="danger-button"
+                >
+                    Limpar cache
+                </button>
+            </div>
+        </section>
+
+        <section class="explanation-card">
+            <h2>Como interpretar</h2>
+
+            <div class="explanation-item">
+                <span class="example-badge hit">
+                    HIT
+                </span>
+
+                <p>
+                    O dado foi encontrado no Redis.
+                    A resposta deve ser rápida.
+                </p>
+            </div>
+
+            <div class="explanation-item">
+                <span class="example-badge miss">
+                    MISS
+                </span>
+
+                <p>
+                    O Redis não tinha o dado.
+                    O backend precisou gerar um novo resultado.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <script src="home.js"></script>
 </body>
+
 </html>
