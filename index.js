@@ -87,6 +87,18 @@ function register() {
         "/pages/register/register.html";
 }
 
+function togglePasswordVisibility() {
+    const passwordInput = form.password();
+    const toggleButton = document.getElementById("password-toggle");
+    const showingPassword = passwordInput.type === "text";
+
+    passwordInput.type = showingPassword ? "password" : "text";
+    toggleButton.setAttribute(
+        "aria-label",
+        showingPassword ? "Mostrar senha" : "Ocultar senha"
+    );
+}
+
 function isEmailValid() {
     const email = form.email().value;
 
