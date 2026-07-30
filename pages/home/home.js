@@ -184,6 +184,12 @@ async function loadSummary() {
         quantidadeGastosElement.textContent =
             result.data.quantidadeGastos;
 
+        document.querySelectorAll(".value-box").forEach((box) => {
+            box.classList.remove("data-loaded");
+            void box.offsetWidth;
+            box.classList.add("data-loaded");
+        });
+
         dataSourceElement.textContent =
             result.source === "redis"
                 ? "Redis"
