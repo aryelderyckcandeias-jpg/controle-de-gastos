@@ -2,103 +2,372 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Acesse o Lumio e acompanhe seus gastos com clareza e segurança.">
-    <title>Entrar | Lumio Finanças</title>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Organize seus gastos e acompanhe sua vida financeira com clareza."
+    >
+
+    <meta
+        name="theme-color"
+        content="#102a24"
+    >
+
+    <title>Entrar | Controle de Gastos</title>
+
     <link rel="stylesheet" href="global.css">
     <link rel="stylesheet" href="index.css">
-</head>
-<body class="auth-page">
-    <main class="auth-shell">
-        <section class="auth-showcase" aria-label="Apresentação do Lumio">
-            <div class="showcase-glow glow-one"></div>
-            <div class="showcase-glow glow-two"></div>
 
-            <a class="brand brand-light" href="/" aria-label="Lumio, página inicial">
-                <span class="brand-mark" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M5 17V11M12 17V7M19 17V4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M3 20h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+    <script
+        src="validations.js"
+        defer
+    ></script>
+
+    <script
+        src="index.js"
+        defer
+    ></script>
+</head>
+
+<body class="auth-page">
+    <div class="auth-layout">
+        <!--
+            Painel institucional.
+            Aparece principalmente em telas maiores.
+        -->
+        <aside
+            class="brand-panel"
+            aria-label="Apresentação do Controle de Gastos"
+        >
+            <div class="brand-panel-content">
+                <a
+                    href="/"
+                    class="brand"
+                    aria-label="Controle de Gastos - início"
+                >
+                    <span
+                        class="brand-mark"
+                        aria-hidden="true"
+                    >
+                        CG
+                    </span>
+
+                    <span class="brand-name">
+                        Controle de Gastos
+                    </span>
+                </a>
+
+                <div class="brand-copy">
+                    <p class="eyebrow">
+                        FINANÇAS SEM COMPLICAÇÃO
+                    </p>
+
+                    <h1>
+                        Entenda seu dinheiro.
+                        Decida com clareza.
+                    </h1>
+
+                    <p class="brand-description">
+                        Organize sua rotina financeira,
+                        acompanhe seus gastos e transforme
+                        números em decisões melhores.
+                    </p>
+                </div>
+
+                <!--
+                    Prévia decorativa de um futuro dashboard.
+                -->
+                <div
+                    class="finance-preview"
+                    aria-hidden="true"
+                >
+                    <div class="preview-header">
+                        <div>
+                            <span class="preview-label">
+                                Saldo do mês
+                            </span>
+
+                            <strong>
+                                R$ 4.820,00
+                            </strong>
+                        </div>
+
+                        <span class="growth-badge">
+                            +8,4%
+                        </span>
+                    </div>
+
+                    <div class="chart">
+                        <span class="chart-bar"></span>
+                        <span class="chart-bar"></span>
+                        <span class="chart-bar"></span>
+                        <span class="chart-bar"></span>
+                        <span class="chart-bar"></span>
+                        <span class="chart-bar"></span>
+                        <span class="chart-bar"></span>
+                        <span class="chart-bar"></span>
+                    </div>
+
+                    <div class="preview-footer">
+                        <span>Entradas</span>
+                        <span>Saídas</span>
+                        <span>Economia</span>
+                    </div>
+                </div>
+
+                <ul class="benefit-list">
+                    <li>
+                        <span
+                            class="benefit-check"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </span>
+
+                        Dados organizados em um só lugar
+                    </li>
+
+                    <li>
+                        <span
+                            class="benefit-check"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </span>
+
+                        Acesso protegido por sessão
+                    </li>
+
+                    <li>
+                        <span
+                            class="benefit-check"
+                            aria-hidden="true"
+                        >
+                            ✓
+                        </span>
+
+                        Respostas rápidas com Redis
+                    </li>
+                </ul>
+            </div>
+
+            <p class="brand-footer">
+                Projeto em desenvolvimento
+            </p>
+        </aside>
+
+        <!--
+            Área principal do formulário.
+        -->
+        <main class="auth-main">
+            <a
+                href="/"
+                class="mobile-brand"
+                aria-label="Controle de Gastos - início"
+            >
+                <span
+                    class="brand-mark"
+                    aria-hidden="true"
+                >
+                    CG
                 </span>
-                Lumio
+
+                <span class="brand-name">
+                    Controle de Gastos
+                </span>
             </a>
 
-            <div class="showcase-content">
-                <span class="eyebrow"><i></i> Finanças sem complicação</span>
-                <h1>Clareza para decidir.<br><em>Controle para crescer.</em></h1>
-                <p>Uma visão simples e inteligente dos seus gastos, para você cuidar melhor do que importa.</p>
+            <section
+                class="auth-card"
+                aria-labelledby="login-title"
+            >
+                <header class="auth-header">
+                    <p class="auth-eyebrow">
+                        ÁREA SEGURA
+                    </p>
 
-                <div class="preview-card" aria-hidden="true">
-                    <div class="preview-top">
-                        <div><span>Saldo disponível</span><strong>R$ 8.420,50</strong></div>
-                        <span class="trend">↗ 12,4%</span>
-                    </div>
-                    <div class="chart-bars">
-                        <i style="--h:35%"></i><i style="--h:52%"></i><i style="--h:43%"></i><i style="--h:68%"></i><i style="--h:58%"></i><i style="--h:85%"></i><i class="active" style="--h:74%"></i>
-                    </div>
-                    <div class="chart-labels"><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span></div>
-                </div>
-            </div>
+                    <h2 id="login-title">
+                        Bem-vindo de volta
+                    </h2>
 
-            <p class="showcase-footer"><span>●</span> Ambiente protegido e seguro</p>
-        </section>
-
-        <section class="auth-panel">
-            <div class="mobile-brand">
-                <a class="brand" href="/">
-                    <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M5 17V11M12 17V7M19 17V4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M3 20h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span>
-                    Lumio
-                </a>
-            </div>
-
-            <form class="auth-form" onsubmit="login(event)" novalidate>
-                <header class="form-heading">
-                    <span class="form-kicker">Bem-vindo de volta</span>
-                    <h2>Acesse sua conta</h2>
-                    <p>Entre com suas credenciais para continuar.</p>
+                    <p>
+                        Entre com seus dados para acessar
+                        seu painel financeiro.
+                    </p>
                 </header>
 
-                <div class="demo-access">
-                    <span class="demo-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z" stroke="currentColor" stroke-width="1.8"/><path d="M12 11v5M12 8h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                    </span>
-                    <div><strong>Acesso de demonstração</strong><p><span>aluno@email.com</span><b>•</b><span>Senha: 123456</span></p></div>
-                </div>
+                <form
+                    id="login-form"
+                    novalidate
+                >
+                    <!-- E-mail -->
+                    <div
+                        class="form-group"
+                        id="email-group"
+                    >
+                        <label for="email">
+                            E-mail
+                        </label>
 
-                <div class="form-field">
-                    <label for="email">E-mail</label>
-                    <div class="input-wrap">
-                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m4 6 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.8"/></svg>
-                        <input type="email" name="email" id="email" oninput="onChangeEmail()" placeholder="voce@email.com" autocomplete="email" aria-describedby="email-required-error email-invalid-error">
+                        <div class="input-shell">
+                            <input
+                                type="email"
+                                name="email"
+                                id="email"
+                                placeholder="seu@email.com"
+                                autocomplete="email"
+                                aria-describedby="email-required-error email-invalid-error"
+                            >
+                        </div>
+
+                        <p
+                            class="field-error"
+                            id="email-required-error"
+                            hidden
+                        >
+                            Informe seu e-mail.
+                        </p>
+
+                        <p
+                            class="field-error"
+                            id="email-invalid-error"
+                            hidden
+                        >
+                            Digite um e-mail válido.
+                        </p>
                     </div>
-                    <div class="error" id="email-required-error">Informe seu e-mail.</div>
-                    <div class="error" id="email-invalid-error">Digite um e-mail válido.</div>
-                </div>
 
-                <div class="form-field">
-                    <div class="label-row"><label for="password">Senha</label><button type="button" class="text-button" id="recover-password-button" disabled>Esqueci minha senha</button></div>
-                    <div class="input-wrap">
-                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.8"/><path d="M12 14v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                        <input type="password" name="password" id="password" oninput="onChangePassword()" placeholder="Digite sua senha" autocomplete="current-password" aria-describedby="password-required-error">
-                        <button type="button" class="password-toggle" onclick="togglePasswordVisibility()" aria-label="Mostrar senha" id="password-toggle">
-                            <svg viewBox="0 0 24 24" fill="none"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="2.5" stroke="currentColor" stroke-width="1.8"/></svg>
-                        </button>
+                    <!-- Senha -->
+                    <div
+                        class="form-group"
+                        id="password-group"
+                    >
+                        <div class="label-row">
+                            <label for="password">
+                                Senha
+                            </label>
+
+                            <button
+                                type="button"
+                                id="recover-password-button"
+                                class="text-button"
+                                disabled
+                            >
+                                Esqueci minha senha
+                            </button>
+                        </div>
+
+                        <div class="input-shell password-shell">
+                            <input
+                                type="password"
+                                name="password"
+                                id="password"
+                                placeholder="Digite sua senha"
+                                autocomplete="current-password"
+                                aria-describedby="password-required-error password-invalid-error"
+                            >
+
+                            <button
+                                type="button"
+                                id="toggle-password-button"
+                                class="password-toggle"
+                                aria-label="Mostrar senha"
+                                aria-pressed="false"
+                            >
+                                Mostrar
+                            </button>
+                        </div>
+
+                        <p
+                            class="field-error"
+                            id="password-required-error"
+                            hidden
+                        >
+                            Informe sua senha.
+                        </p>
+
+                        <p
+                            class="field-error"
+                            id="password-invalid-error"
+                            hidden
+                        >
+                            A senha precisa ter pelo menos
+                            6 caracteres.
+                        </p>
                     </div>
-                    <div class="error" id="password-required-error">Informe sua senha.</div>
-                </div>
 
-                <div id="login-message" role="alert" aria-live="polite"></div>
+                    <!-- Mensagens do backend -->
+                    <div
+                        id="login-message"
+                        class="feedback"
+                        role="status"
+                        aria-live="polite"
+                        hidden
+                    ></div>
 
-                <button type="submit" class="solid" id="login-button" disabled>
-                    <span>Entrar na minha conta</span>
-                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M14 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </button>
+                    <!-- Entrar -->
+                    <button
+                        type="submit"
+                        id="login-button"
+                        class="button button-primary"
+                        disabled
+                    >
+                        <span class="button-label">
+                            Entrar
+                        </span>
 
-                <div class="divider"><span>ou</span></div>
-                <button type="button" class="outline" onclick="register()">Criar uma conta gratuita</button>
-                <p class="terms">Ao continuar, você concorda com os <a href="#">Termos de Uso</a> e a <a href="#">Política de Privacidade</a>.</p>
-            </form>
-        </section>
-    </main>
-    <script src="validations.js"></script>
-    <script src="index.js"></script>
+                        <span
+                            class="button-loader"
+                            aria-hidden="true"
+                        ></span>
+                    </button>
+
+                    <div
+                        class="divider"
+                        aria-hidden="true"
+                    >
+                        <span>ou</span>
+                    </div>
+
+                    <!-- Cadastro -->
+                    <button
+                        type="button"
+                        id="register-button"
+                        class="button button-secondary"
+                    >
+                        Criar uma conta
+                    </button>
+                </form>
+
+                <details class="study-credentials">
+                    <summary>
+                        Credenciais do ambiente de estudo
+                    </summary>
+
+                    <div class="credentials-content">
+                        <p>
+                            <strong>E-mail:</strong>
+                            aluno@email.com
+                        </p>
+
+                        <p>
+                            <strong>Senha:</strong>
+                            123456
+                        </p>
+                    </div>
+                </details>
+            </section>
+
+            <p class="auth-legal">
+                Ao continuar, você confirma que está
+                utilizando um ambiente de estudo.
+            </p>
+        </main>
+    </div>
 </body>
 </html>
