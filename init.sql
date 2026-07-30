@@ -41,8 +41,9 @@ INSERT INTO categorias (nome, cor) VALUES
     ('Saúde', '#33FFF5');
 
 -- Inserir usuário padrão
-INSERT INTO usuarios (nome, email) VALUES 
-    ('Admin', 'admin@email.com');
+INSERT INTO usuarios (nome, email) VALUES
+    ('Admin', 'admin@email.com')
+ON CONFLICT (email) DO NOTHING;
 
 -- Inserir alguns gastos de exemplo
 INSERT INTO gastos (descricao, valor, data, categoria_id) VALUES 

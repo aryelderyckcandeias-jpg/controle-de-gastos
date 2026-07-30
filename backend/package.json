@@ -1,0 +1,14 @@
+{
+  "name": "controle-de-gastos-backend",
+  "version": "1.0.0",
+  "description": "Backend da aplicação de controle de gastos",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "5.2.1",
+    "redis": "6.1.0"
+  }
+}

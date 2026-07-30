@@ -1,14 +1,18 @@
-# Usa uma imagem oficial do Nginx (servidor web leve e rápido)
+# Imagem que servirá os arquivos HTML/CSS/JS
 FROM nginx:alpine
 
-# Copia TODOS os arquivos da sua pasta para a pasta do Nginx
-# O ponto (.) significa: "tudo que está aqui na pasta atual"
-# /usr/share/nginx/html é onde o Nginx procura os arquivos para mostrar
-COPY . /usr/share/nginx/html
+# Copia os arquivos da página inicial
+COPY index.html /usr/share/nginx/html/
+COPY index.js /usr/share/nginx/html/
+COPY index.css /usr/share/nginx/html/
+COPY global.css /usr/share/nginx/html/
+COPY validations.js /usr/share/nginx/html/
 
-# Diz que a aplicação vai usar a porta 80 (porta padrão HTTP)
+# Copia todas as páginas da pasta pages
+COPY pages/ /usr/share/nginx/html/pages/
+
+# Porta utilizada pelo Nginx
 EXPOSE 80
 
-# Quando o container iniciar, ele rodará este comando
-# que inicia o servidor Nginx
+# Inicia o Nginx
 CMD ["nginx", "-g", "daemon off;"]
