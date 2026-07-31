@@ -4,9 +4,14 @@
  * =====================================================
  *
  * Este arquivo contém as decisões visuais globais:
- * cores, espaçamentos, bordas, sombras e animações.
+ * cores, tipografia, espaçamentos, bordas, sombras,
+ * animações e os componentes usados em mais de uma
+ * página (marca, botões, mensagens de feedback).
+ *
+ * Nenhuma outra folha de estilo deve redefinir estes
+ * tokens — apenas consumi-los com var(--nome-do-token).
  */
-
+ 
 :root {
     /*
      * Cores principais.
@@ -19,7 +24,7 @@
     --color-primary-400: #31a77c;
     --color-primary-100: #dff5ec;
     --color-primary-50: #f0faf6;
-
+ 
     /*
      * Cores neutras.
      */
@@ -35,7 +40,7 @@
     --color-neutral-100: #f0f3f2;
     --color-neutral-50: #f8faf9;
     --color-white: #ffffff;
-
+ 
     /*
      * Cores de estado.
      */
@@ -43,20 +48,25 @@
     --color-danger-600: #c23b42;
     --color-danger-100: #fbe5e7;
     --color-danger-50: #fff4f4;
-
+ 
     --color-success-700: #166342;
     --color-success-100: #dff5e9;
     --color-success-50: #effbf4;
-
+ 
     --color-info-700: #315e8a;
     --color-info-100: #e5f0fa;
-
+ 
+    --color-warning-700: #97590f;
+    --color-warning-100: #faead1;
+    --color-warning-50: #fff8ef;
+ 
     /*
      * Tipografia.
      *
      * Usamos fontes do próprio sistema operacional.
      * Assim, a aplicação fica rápida e não depende
-     * de um servidor externo de fontes.
+     * de um servidor externo de fontes — importante
+     * já que ela roda em containers isolados.
      */
     --font-family:
         Inter,
@@ -68,7 +78,7 @@
         Helvetica,
         Arial,
         sans-serif;
-
+ 
     /*
      * Espaçamentos.
      */
@@ -82,7 +92,7 @@
     --space-10: 40px;
     --space-12: 48px;
     --space-16: 64px;
-
+ 
     /*
      * Bordas.
      */
@@ -91,29 +101,31 @@
     --radius-lg: 16px;
     --radius-xl: 22px;
     --radius-round: 999px;
-
+ 
     /*
      * Sombras.
      */
     --shadow-sm:
         0 1px 2px rgba(16, 42, 36, 0.06);
-
+ 
     --shadow-md:
         0 12px 30px rgba(16, 42, 36, 0.09);
-
+ 
     --shadow-lg:
         0 24px 60px rgba(16, 42, 36, 0.12);
-
+ 
     /*
      * Animações e transições.
      */
     --transition-fast: 150ms ease;
     --transition-normal: 220ms ease;
-
+ 
+    --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+ 
     --transition-enter:
-        450ms cubic-bezier(0.22, 1, 0.36, 1);
+        450ms var(--ease-standard);
 }
-
+ 
 /*
  * Reset básico.
  */
@@ -122,47 +134,49 @@
 *::after {
     box-sizing: border-box;
 }
-
+ 
 html {
     min-height: 100%;
     font-family: var(--font-family);
     color: var(--color-neutral-900);
     background-color: var(--color-neutral-50);
 }
-
+ 
 body {
     min-height: 100vh;
     margin: 0;
 }
-
+ 
 button,
 input,
 textarea,
 select {
     font: inherit;
 }
-
+ 
 button {
     border: 0;
+    background: none;
+    cursor: pointer;
 }
-
+ 
 a {
     color: inherit;
 }
-
+ 
 img,
 svg {
     display: block;
     max-width: 100%;
 }
-
+ 
 /*
  * Remove visualmente um elemento que possui hidden.
  */
 [hidden] {
     display: none !important;
 }
-
+ 
 /*
  * Foco visível para usuários de teclado.
  */
@@ -170,26 +184,468 @@ svg {
     outline: 3px solid rgba(49, 167, 124, 0.35);
     outline-offset: 3px;
 }
-
+ 
 /*
  * Classe para texto disponível somente
  * para leitores de tela.
  */
 .sr-only {
     position: absolute;
-
+ 
     width: 1px;
     height: 1px;
     padding: 0;
     margin: -1px;
-
+ 
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
-
+ 
     white-space: nowrap;
     border: 0;
 }
-
+ 
+/*
+ * =====================================================
+ * MARCA
+ * =====================================================
+ *
+ * Usado igualmente no login, no cadastro e na home,
+ * para que a identidade visual não mude entre páginas.
+ */
+ 
+.brand,
+.mobile-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+ 
+    color: inherit;
+ 
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+}
+ 
+.brand-mark {
+    display: inline-grid;
+    flex: 0 0 auto;
+    place-items: center;
+ 
+    width: 40px;
+    height: 40px;
+ 
+    border-radius: var(--radius-md);
+ 
+    color: var(--color-primary-100);
+    background-color: var(--color-primary-900);
+}
+ 
+.brand-mark svg {
+    width: 20px;
+    height: 20px;
+}
+ 
+/*
+ * Em fundos escuros (painel de marca do login,
+ * painel do cadastro) o selo se inverte.
+ */
+.brand-mark.on-dark {
+    color: var(--color-primary-900);
+    background-color: var(--color-primary-100);
+}
+ 
+/*
+ * Ícone que sugere avanço (ex.: seta de "continuar").
+ * Aplicar a classe no <svg> dentro de um .button —
+ * ele desliza para a frente no hover, reforçando a ação.
+ */
+.icon-arrow {
+    transition: transform var(--transition-normal);
+}
+ 
+.button:hover:not(:disabled) .icon-arrow {
+    transform: translateX(3px);
+}
+ 
+/*
+ * Ícone que sugere atualização/recarregamento —
+ * gira meia-volta no hover.
+ */
+.icon-refresh {
+    transition: transform 350ms var(--ease-standard);
+}
+ 
+.button:hover:not(:disabled) .icon-refresh {
+    transform: rotate(180deg);
+}
+ 
+/*
+ * =====================================================
+ * BOTÕES
+ * =====================================================
+ */
+ 
+.button {
+    position: relative;
+ 
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-2);
+ 
+    min-height: 48px;
+    padding: 0 var(--space-5);
+ 
+    border-radius: var(--radius-md);
+ 
+    font-size: 14px;
+    font-weight: 700;
+ 
+    cursor: pointer;
+ 
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        opacity var(--transition-fast);
+}
+ 
+.button svg {
+    width: 17px;
+    height: 17px;
+}
+ 
+.button:hover:not(:disabled) {
+    transform: translateY(-1px);
+}
+ 
+.button:active:not(:disabled) {
+    transform: translateY(0);
+}
+ 
+.button:disabled {
+    opacity: 0.48;
+    cursor: not-allowed;
+}
+ 
+.button-block {
+    width: 100%;
+}
+ 
+.button-primary {
+    color: var(--color-white);
+    background-color: var(--color-primary-600);
+ 
+    box-shadow:
+        0 8px 20px rgba(23, 107, 82, 0.2);
+}
+ 
+.button-primary:hover:not(:disabled) {
+    background-color: var(--color-primary-700);
+ 
+    box-shadow:
+        0 10px 24px rgba(23, 107, 82, 0.24);
+}
+ 
+.button-secondary {
+    border: 1px solid var(--color-neutral-300);
+ 
+    color: var(--color-neutral-800);
+    background-color: var(--color-white);
+}
+ 
+.button-secondary:hover:not(:disabled) {
+    border-color: var(--color-primary-400);
+    background-color: var(--color-primary-50);
+}
+ 
+.button-danger {
+    border: 1px solid #f0c7cb;
+ 
+    color: var(--color-danger-700);
+    background-color: var(--color-white);
+}
+ 
+.button-danger:hover:not(:disabled) {
+    background-color: var(--color-danger-50);
+}
+ 
+.button-loader {
+    position: absolute;
+ 
+    display: none;
+ 
+    width: 18px;
+    height: 18px;
+ 
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: var(--color-white);
+    border-radius: 50%;
+ 
+    animation:
+        spin
+        700ms
+        linear
+        infinite;
+}
+ 
+.button.is-loading .button-label {
+    opacity: 0;
+}
+ 
+.button.is-loading .button-loader {
+    display: block;
+}
+ 
+.text-button {
+    padding: 0;
+ 
+    color: var(--color-primary-700);
+    background: transparent;
+ 
+    font-size: 12px;
+    font-weight: 700;
+ 
+    cursor: pointer;
+}
+ 
+.text-button:hover:not(:disabled) {
+    color: var(--color-primary-500);
+    text-decoration: underline;
+}
+ 
+.text-button:disabled {
+    color: var(--color-neutral-400);
+    cursor: not-allowed;
+}
+ 
+.divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+ 
+    color: var(--color-neutral-500);
+ 
+    font-size: 12px;
+}
+ 
+.divider::before,
+.divider::after {
+    flex: 1;
+ 
+    height: 1px;
+ 
+    content: "";
+ 
+    background-color: var(--color-neutral-200);
+}
+ 
+/*
+ * =====================================================
+ * MENSAGENS DE FEEDBACK
+ * =====================================================
+ *
+ * Usado para respostas do backend (login) e para o
+ * status de operações (home). Uma única linguagem
+ * visual de "isso deu certo / atenção / deu errado".
+ */
+ 
+.feedback {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+ 
+    padding: 12px 14px;
+ 
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+ 
+    font-size: 13px;
+    line-height: 1.5;
+ 
+    animation:
+        feedback-enter
+        220ms
+        ease
+        both;
+}
+ 
+.feedback::before {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 auto;
+ 
+    border-radius: 50%;
+    background-color: currentColor;
+ 
+    content: "";
+}
+ 
+.feedback-error {
+    border-color: #f2c8cb;
+ 
+    color: var(--color-danger-700);
+    background-color: var(--color-danger-50);
+}
+ 
+.feedback-success {
+    border-color: #bfe8d1;
+ 
+    color: var(--color-success-700);
+    background-color: var(--color-success-50);
+}
+ 
+.feedback-loading,
+.feedback-info {
+    border-color: #cbddeb;
+ 
+    color: var(--color-info-700);
+    background-color: var(--color-info-100);
+}
+ 
+.feedback-warning {
+    border-color: #f2debb;
+ 
+    color: var(--color-warning-700);
+    background-color: var(--color-warning-100);
+}
+ 
+.feedback-loading::before {
+    width: 12px;
+    height: 12px;
+ 
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    background: transparent;
+ 
+    animation: spin 700ms linear infinite;
+}
+ 
+/*
+ * =====================================================
+ * BADGES (selos de status curtos)
+ * =====================================================
+ */
+ 
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+ 
+    padding: 7px 12px;
+ 
+    border-radius: var(--radius-round);
+ 
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+ 
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+ 
+.badge::before {
+    width: 6px;
+    height: 6px;
+    flex: 0 0 auto;
+ 
+    border-radius: 50%;
+    background-color: currentColor;
+ 
+    content: "";
+}
+ 
+.badge-neutral {
+    color: var(--color-neutral-600);
+    background-color: var(--color-neutral-100);
+}
+ 
+.badge-success {
+    color: var(--color-success-700);
+    background-color: var(--color-success-100);
+}
+ 
+.badge-warning {
+    color: var(--color-warning-700);
+    background-color: var(--color-warning-100);
+}
+ 
+.badge-info {
+    color: var(--color-info-700);
+    background-color: var(--color-info-100);
+}
+ 
+/*
+ * =====================================================
+ * ANIMAÇÕES COMPARTILHADAS
+ * =====================================================
+ */
+ 
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+ 
+@keyframes feedback-enter {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+ 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+ 
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+ 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+ 
+/*
+ * Pulso lento e discreto — usado no círculo decorativo
+ * dos painéis escuros (login e cadastro), como um
+ * fundo "vivo" em vez de estático.
+ */
+@keyframes orb-pulse {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.12;
+    }
+ 
+    50% {
+        transform: scale(1.06);
+        opacity: 0.2;
+    }
+}
+ 
+/*
+ * Pulso do anel ao redor de um indicador "ao vivo"
+ * (ex.: sessão ativa).
+ */
+@keyframes dot-pulse {
+    0%,
+    100% {
+        box-shadow: 0 0 0 4px var(--color-primary-100);
+    }
+ 
+    50% {
+        box-shadow: 0 0 0 7px rgba(24, 130, 95, 0.14);
+    }
+}
+ 
 /*
  * Respeita usuários que desativaram
  * animações no sistema operacional.
@@ -199,10 +655,10 @@ svg {
     *::before,
     *::after {
         scroll-behavior: auto !important;
-
+ 
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
-
+ 
         transition-duration: 0.01ms !important;
     }
 }
