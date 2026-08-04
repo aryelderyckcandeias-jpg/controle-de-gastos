@@ -1,0 +1,342 @@
+/* ==========================================================
+   LOGIN PAGE
+========================================================== */
+
+.login-page{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    padding:40px 20px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #0F172A 0%,
+        #172554 45%,
+        #0F172A 100%
+    );
+
+}
+
+/* ==========================================================
+   BACKGROUND
+========================================================== */
+
+.background-blur{
+
+    position:absolute;
+
+    width:420px;
+
+    height:420px;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.20;
+
+    pointer-events:none;
+
+}
+
+.background-left{
+
+    background:#2563EB;
+
+    top:-120px;
+
+    left:-120px;
+
+}
+
+.background-right{
+
+    background:#22C55E;
+
+    bottom:-120px;
+
+    right:-120px;
+
+}
+
+/* ==========================================================
+   LOGIN CARD
+========================================================== */
+
+.login-card{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:430px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+    padding:40px;
+
+    backdrop-filter:blur(18px);
+
+    z-index:1;
+
+}
+
+/* ==========================================================
+   LOGO
+========================================================== */
+
+.logo-container{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.logo{
+
+    width:72px;
+
+    height:72px;
+
+    object-fit:contain;
+
+}
+
+/* ==========================================================
+   TYPOGRAPHY
+========================================================== */
+
+.login-title{
+
+    text-align:center;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+}
+
+.login-subtitle{
+
+    text-align:center;
+
+    color:var(--color-text-secondary);
+
+    margin-top:-12px;
+
+}
+
+/* ==========================================================
+   FORM
+========================================================== */
+
+.login-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.login-form .btn{
+
+    width:100%;
+
+    margin-top:8px;
+
+}
+
+.login-divider{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.login-divider span{
+
+    flex:1;
+
+    height:1px;
+
+    background:var(--color-border);
+
+}
+
+.login-divider p{
+
+    font-size:.85rem;
+
+    color:var(--color-text-secondary);
+
+}
+
+.login-footer{
+
+    text-align:center;
+
+}
+
+.login-footer p{
+
+    font-size:.8rem;
+
+}
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+.input{
+
+    height:52px;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+
+}
+
+.input::placeholder{
+
+    color:var(--color-text-secondary);
+
+}
+
+.input:hover{
+
+    border-color:#475569;
+
+}
+
+.input:focus{
+
+    transform:translateY(-1px);
+
+}
+
+/* ==========================================================
+   BUTTON
+========================================================== */
+
+.login-form .btn{
+
+    height:54px;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+}
+
+.btn-primary{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.login-card > .btn{
+
+    width:100%;
+
+}
+
+.login-card{
+
+    animation:slideUp .6s ease;
+
+}
+
+.logo{
+
+    transition:transform .3s ease;
+
+}
+
+.logo:hover{
+
+    transform:rotate(-4deg) scale(1.05);
+
+}
+
+/* ==========================================================
+   RESPONSIVO
+========================================================== */
+
+@media (max-width:768px){
+
+    .login-card{
+
+        padding:32px 24px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .login-page{
+
+        padding:16px;
+
+    }
+
+    .login-card{
+
+        padding:24px;
+
+        border-radius:20px;
+
+    }
+
+    .login-title{
+
+        font-size:1.8rem;
+
+    }
+
+}
+
+/* ==========================================================
+   ACESSIBILIDADE
+========================================================== */
+
+@media (prefers-reduced-motion: reduce){
+
+    *{
+
+        animation:none !important;
+
+        transition:none !important;
+
+        scroll-behavior:auto !important;
+
+    }
+
+}

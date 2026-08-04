@@ -1,0 +1,688 @@
+/* ==========================================================
+   COMPONENTS
+   Controle de Gastos
+
+   Componentes reutilizáveis da aplicação.
+   Este arquivo não deve conter estilos específicos de página.
+========================================================== */
+
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.btn {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: var(--space-2);
+
+    min-height: var(--button-height);
+
+    padding:
+        var(--space-3)
+        var(--space-5);
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+
+    line-height: 1;
+    text-decoration: none;
+
+    cursor: pointer;
+    user-select: none;
+
+    transition:
+        transform var(--duration-fast) var(--ease-standard),
+        background-color var(--duration-normal) var(--ease-standard),
+        border-color var(--duration-normal) var(--ease-standard),
+        color var(--duration-normal) var(--ease-standard),
+        box-shadow var(--duration-normal) var(--ease-standard),
+        opacity var(--duration-normal) var(--ease-standard);
+}
+
+
+/* ---------- Hover ---------- */
+
+.btn:hover:not(:disabled) {
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ---------- Active ---------- */
+
+.btn:active:not(:disabled) {
+
+    transform: translateY(0) scale(0.98);
+
+}
+
+
+/* ---------- Focus ---------- */
+
+.btn:focus-visible {
+
+    outline: none;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(59, 130, 246, 0.25);
+
+}
+
+
+/* ---------- Disabled ---------- */
+
+.btn:disabled {
+
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+}
+
+
+/* ==========================================================
+   PRIMARY BUTTON
+========================================================== */
+
+.btn-primary {
+
+    background: var(--color-primary);
+
+    border-color: var(--color-primary);
+
+    color: #FFFFFF;
+
+}
+
+
+.btn-primary:hover:not(:disabled) {
+
+    background: var(--color-primary-hover);
+
+    border-color: var(--color-primary-hover);
+
+}
+
+
+/* ==========================================================
+   DANGER BUTTON
+========================================================== */
+
+.btn-danger {
+
+    background: var(--color-danger);
+
+    border-color: var(--color-danger);
+
+    color: #FFFFFF;
+
+}
+
+
+.btn-danger:hover:not(:disabled) {
+
+    background: var(--color-danger-hover);
+
+    border-color: var(--color-danger-hover);
+
+}
+
+
+/* ==========================================================
+   SUCCESS BUTTON
+========================================================== */
+
+.btn-success {
+
+    background: var(--color-success);
+
+    border-color: var(--color-success);
+
+    color: #FFFFFF;
+
+}
+
+
+.btn-success:hover:not(:disabled) {
+
+    background: var(--color-success-hover);
+
+    border-color: var(--color-success-hover);
+
+}
+
+
+/* ==========================================================
+   OUTLINE BUTTON
+========================================================== */
+
+.btn-outline {
+
+    background: transparent;
+
+    border-color: var(--color-border);
+
+    color: var(--color-text);
+
+}
+
+
+.btn-outline:hover:not(:disabled) {
+
+    background: var(--color-surface-hover);
+
+    border-color: var(--color-border-hover);
+
+}
+
+
+/* ==========================================================
+   BLOCK BUTTON
+========================================================== */
+
+.btn-block {
+
+    width: 100%;
+
+}
+
+
+/* ==========================================================
+   LOADING BUTTON
+========================================================== */
+
+.btn.is-loading {
+
+    position: relative;
+
+    color: transparent;
+
+    pointer-events: none;
+
+}
+
+
+.btn.is-loading::after {
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 20px;
+    height: 20px;
+
+    border: 2px solid rgba(255, 255, 255, 0.35);
+
+    border-top-color: #FFFFFF;
+
+    border-radius: var(--radius-full);
+
+    content: "";
+
+    animation:
+        spin
+        var(--duration-slow)
+        linear
+        infinite;
+
+    transform: translate(-50%, -50%);
+
+}
+
+
+/* ==========================================================
+   INPUT GROUP
+========================================================== */
+
+.input-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-2);
+
+}
+
+
+/* ==========================================================
+   INPUT
+========================================================== */
+
+.input {
+
+    width: 100%;
+
+    min-height: var(--input-height);
+
+    padding:
+        var(--space-3)
+        var(--space-4);
+
+    border: 1px solid var(--color-border);
+
+    border-radius: var(--radius-md);
+
+    background: var(--color-surface);
+
+    color: var(--color-text);
+
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+
+    outline: none;
+
+    transition:
+        border-color var(--duration-normal) var(--ease-standard),
+        background-color var(--duration-normal) var(--ease-standard),
+        box-shadow var(--duration-normal) var(--ease-standard),
+        transform var(--duration-fast) var(--ease-standard);
+
+}
+
+
+/* ---------- Placeholder ---------- */
+
+.input::placeholder {
+
+    color: var(--color-text-muted);
+
+}
+
+
+/* ---------- Hover ---------- */
+
+.input:hover {
+
+    border-color: var(--color-border-hover);
+
+}
+
+
+/* ---------- Focus ---------- */
+
+.input:focus {
+
+    border-color: var(--color-border-focus);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(59, 130, 246, 0.15);
+
+}
+
+
+/* ---------- Disabled ---------- */
+
+.input:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+}
+
+
+/* ==========================================================
+   LABEL
+========================================================== */
+
+.label {
+
+    display: block;
+
+    color: var(--color-text);
+
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-semibold);
+
+    line-height: 1.4;
+
+}
+
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.card {
+
+    padding: var(--space-6);
+
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius: var(--radius-lg);
+
+    background:
+        var(--color-surface);
+
+    box-shadow:
+        var(--shadow-md);
+
+}
+
+
+/* ==========================================================
+   SURFACE
+========================================================== */
+
+.surface {
+
+    background:
+        var(--color-surface);
+
+    border:
+        1px solid
+        var(--color-border);
+
+    border-radius:
+        var(--radius-lg);
+
+    box-shadow:
+        var(--shadow-md);
+
+}
+
+
+/* ==========================================================
+   BADGE
+========================================================== */
+
+.badge {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 24px;
+
+    padding:
+        var(--space-1)
+        var(--space-3);
+
+    border-radius:
+        var(--radius-full);
+
+    font-size:
+        var(--font-size-xs);
+
+    font-weight:
+        var(--font-weight-semibold);
+
+    line-height: 1;
+
+}
+
+
+/* ---------- Success ---------- */
+
+.badge-success {
+
+    background:
+        var(--color-success-background);
+
+    color:
+        var(--color-success);
+
+}
+
+
+/* ---------- Danger ---------- */
+
+.badge-danger {
+
+    background:
+        var(--color-danger-background);
+
+    color:
+        var(--color-danger);
+
+}
+
+
+/* ---------- Warning ---------- */
+
+.badge-warning {
+
+    background:
+        var(--color-warning-background);
+
+    color:
+        var(--color-warning);
+
+}
+
+
+/* ---------- Info ---------- */
+
+.badge-info {
+
+    background:
+        var(--color-info-background);
+
+    color:
+        var(--color-info);
+
+}
+
+
+/* ==========================================================
+   ALERT
+========================================================== */
+
+.alert {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: var(--space-3);
+
+    padding: var(--space-4);
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius:
+        var(--radius-md);
+
+    font-size:
+        var(--font-size-sm);
+
+    line-height: 1.5;
+
+}
+
+
+/* ---------- Error ---------- */
+
+.alert-error {
+
+    background:
+        var(--color-danger-background);
+
+    border-color:
+        rgba(239, 68, 68, 0.2);
+
+    color:
+        var(--color-danger);
+
+}
+
+
+/* ---------- Success ---------- */
+
+.alert-success {
+
+    background:
+        var(--color-success-background);
+
+    border-color:
+        rgba(34, 197, 94, 0.2);
+
+    color:
+        var(--color-success);
+
+}
+
+
+/* ---------- Warning ---------- */
+
+.alert-warning {
+
+    background:
+        var(--color-warning-background);
+
+    border-color:
+        rgba(245, 158, 11, 0.2);
+
+    color:
+        var(--color-warning);
+
+}
+
+
+/* ---------- Info ---------- */
+
+.alert-info {
+
+    background:
+        var(--color-info-background);
+
+    border-color:
+        rgba(56, 189, 248, 0.2);
+
+    color:
+        var(--color-info);
+
+}
+
+
+/* ==========================================================
+   FORM ERROR
+========================================================== */
+
+.field-error {
+
+    margin-top: var(--space-1);
+
+    color: var(--color-danger);
+
+    font-size: var(--font-size-xs);
+
+    line-height: 1.4;
+
+}
+
+
+/* ==========================================================
+   FEEDBACK
+========================================================== */
+
+.feedback {
+
+    min-height: 20px;
+
+    font-size: var(--font-size-sm);
+
+    font-weight: var(--font-weight-medium);
+
+}
+
+
+.feedback.success {
+
+    color:
+        var(--color-success);
+
+}
+
+
+.feedback.error {
+
+    color:
+        var(--color-danger);
+
+}
+
+
+.feedback.warning {
+
+    color:
+        var(--color-warning);
+
+}
+
+
+.feedback.info {
+
+    color:
+        var(--color-info);
+
+}
+
+
+/* ==========================================================
+   VISUALLY HIDDEN
+
+   Utilizado para acessibilidade quando um elemento precisa
+   continuar disponível para leitores de tela sem aparecer
+   visualmente.
+========================================================== */
+
+.visually-hidden {
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+
+   Respeita a preferência do usuário por menos movimento.
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .btn,
+    .input {
+
+        transition: none;
+
+    }
+
+}

@@ -1,0 +1,989 @@
+/* ==========================================================
+   UTILITIES
+   Controle de Gastos
+
+   Classes pequenas e reutilizáveis.
+
+   Regra:
+   Uma utility deve fazer uma coisa específica.
+========================================================== */
+
+
+/* ==========================================================
+   DISPLAY
+========================================================== */
+
+.block {
+
+    display: block;
+
+}
+
+
+.inline-block {
+
+    display: inline-block;
+
+}
+
+
+.inline {
+
+    display: inline;
+
+}
+
+
+.hidden {
+
+    display: none !important;
+
+}
+
+
+.visible {
+
+    visibility: visible;
+
+}
+
+
+.invisible {
+
+    visibility: hidden;
+
+}
+
+
+/* ==========================================================
+   FLEX
+========================================================== */
+
+.flex {
+
+    display: flex;
+
+}
+
+
+.inline-flex {
+
+    display: inline-flex;
+
+}
+
+
+.flex-column {
+
+    flex-direction: column;
+
+}
+
+
+.flex-row {
+
+    flex-direction: row;
+
+}
+
+
+.flex-wrap {
+
+    flex-wrap: wrap;
+
+}
+
+
+.flex-nowrap {
+
+    flex-wrap: nowrap;
+
+}
+
+
+/* ==========================================================
+   FLEX ALIGNMENT
+========================================================== */
+
+.items-start {
+
+    align-items: flex-start;
+
+}
+
+
+.items-center {
+
+    align-items: center;
+
+}
+
+
+.items-end {
+
+    align-items: flex-end;
+
+}
+
+
+.items-stretch {
+
+    align-items: stretch;
+
+}
+
+
+/* ==========================================================
+   FLEX JUSTIFY
+========================================================== */
+
+.justify-start {
+
+    justify-content: flex-start;
+
+}
+
+
+.justify-center {
+
+    justify-content: center;
+
+}
+
+
+.justify-end {
+
+    justify-content: flex-end;
+
+}
+
+
+.justify-between {
+
+    justify-content: space-between;
+
+}
+
+
+.justify-around {
+
+    justify-content: space-around;
+
+}
+
+
+/* ==========================================================
+   GRID
+========================================================== */
+
+.grid {
+
+    display: grid;
+
+}
+
+
+.grid-1 {
+
+    grid-template-columns: 1fr;
+
+}
+
+
+.grid-2 {
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+}
+
+
+.grid-3 {
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+}
+
+
+.grid-4 {
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+}
+
+
+/* ==========================================================
+   GAP
+========================================================== */
+
+.gap-1 {
+
+    gap: var(--space-1);
+
+}
+
+
+.gap-2 {
+
+    gap: var(--space-2);
+
+}
+
+
+.gap-3 {
+
+    gap: var(--space-3);
+
+}
+
+
+.gap-4 {
+
+    gap: var(--space-4);
+
+}
+
+
+.gap-5 {
+
+    gap: var(--space-5);
+
+}
+
+
+.gap-6 {
+
+    gap: var(--space-6);
+
+}
+
+
+.gap-8 {
+
+    gap: var(--space-8);
+
+}
+
+
+/* ==========================================================
+   WIDTH
+========================================================== */
+
+.w-full {
+
+    width: 100%;
+
+}
+
+
+.w-auto {
+
+    width: auto;
+
+}
+
+
+.max-w-sm {
+
+    max-width: var(--container-sm);
+
+}
+
+
+.max-w-md {
+
+    max-width: var(--container-md);
+
+}
+
+
+.max-w-lg {
+
+    max-width: var(--container-lg);
+
+}
+
+
+.max-w-xl {
+
+    max-width: var(--container-xl);
+
+}
+
+
+/* ==========================================================
+   HEIGHT
+========================================================== */
+
+.h-full {
+
+    height: 100%;
+
+}
+
+
+.min-h-screen {
+
+    min-height: 100vh;
+
+}
+
+
+/* ==========================================================
+   MARGIN
+========================================================== */
+
+.m-0 {
+
+    margin: 0;
+
+}
+
+
+.mx-auto {
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+.mt-1 {
+
+    margin-top: var(--space-1);
+
+}
+
+
+.mt-2 {
+
+    margin-top: var(--space-2);
+
+}
+
+
+.mt-3 {
+
+    margin-top: var(--space-3);
+
+}
+
+
+.mt-4 {
+
+    margin-top: var(--space-4);
+
+}
+
+
+.mt-6 {
+
+    margin-top: var(--space-6);
+
+}
+
+
+.mt-8 {
+
+    margin-top: var(--space-8);
+
+}
+
+
+.mb-1 {
+
+    margin-bottom: var(--space-1);
+
+}
+
+
+.mb-2 {
+
+    margin-bottom: var(--space-2);
+
+}
+
+
+.mb-3 {
+
+    margin-bottom: var(--space-3);
+
+}
+
+
+.mb-4 {
+
+    margin-bottom: var(--space-4);
+
+}
+
+
+.mb-6 {
+
+    margin-bottom: var(--space-6);
+
+}
+
+
+.mb-8 {
+
+    margin-bottom: var(--space-8);
+
+}
+
+
+/* ==========================================================
+   PADDING
+========================================================== */
+
+.p-0 {
+
+    padding: 0;
+
+}
+
+
+.p-1 {
+
+    padding: var(--space-1);
+
+}
+
+
+.p-2 {
+
+    padding: var(--space-2);
+
+}
+
+
+.p-3 {
+
+    padding: var(--space-3);
+
+}
+
+
+.p-4 {
+
+    padding: var(--space-4);
+
+}
+
+
+.p-5 {
+
+    padding: var(--space-5);
+
+}
+
+
+.p-6 {
+
+    padding: var(--space-6);
+
+}
+
+
+.p-8 {
+
+    padding: var(--space-8);
+
+}
+
+
+/* ==========================================================
+   TEXT ALIGNMENT
+========================================================== */
+
+.text-left {
+
+    text-align: left;
+
+}
+
+
+.text-center {
+
+    text-align: center;
+
+}
+
+
+.text-right {
+
+    text-align: right;
+
+}
+
+
+/* ==========================================================
+   TEXT COLORS
+========================================================== */
+
+.text-primary {
+
+    color: var(--color-primary);
+
+}
+
+
+.text-secondary {
+
+    color: var(--color-text-secondary);
+
+}
+
+
+.text-muted {
+
+    color: var(--color-text-muted);
+
+}
+
+
+.text-success {
+
+    color: var(--color-success);
+
+}
+
+
+.text-warning {
+
+    color: var(--color-warning);
+
+}
+
+
+.text-danger {
+
+    color: var(--color-danger);
+
+}
+
+
+.text-info {
+
+    color: var(--color-info);
+
+}
+
+
+/* ==========================================================
+   FONT WEIGHT
+========================================================== */
+
+.font-regular {
+
+    font-weight: var(--font-weight-regular);
+
+}
+
+
+.font-medium {
+
+    font-weight: var(--font-weight-medium);
+
+}
+
+
+.font-semibold {
+
+    font-weight: var(--font-weight-semibold);
+
+}
+
+
+.font-bold {
+
+    font-weight: var(--font-weight-bold);
+
+}
+
+
+/* ==========================================================
+   FONT SIZE
+========================================================== */
+
+.text-xs {
+
+    font-size: var(--font-size-xs);
+
+}
+
+
+.text-sm {
+
+    font-size: var(--font-size-sm);
+
+}
+
+
+.text-md {
+
+    font-size: var(--font-size-md);
+
+}
+
+
+.text-lg {
+
+    font-size: var(--font-size-lg);
+
+}
+
+
+.text-xl {
+
+    font-size: var(--font-size-xl);
+
+}
+
+
+.text-2xl {
+
+    font-size: var(--font-size-2xl);
+
+}
+
+
+.text-3xl {
+
+    font-size: var(--font-size-3xl);
+
+}
+
+
+/* ==========================================================
+   BORDER RADIUS
+========================================================== */
+
+.rounded-sm {
+
+    border-radius: var(--radius-sm);
+
+}
+
+
+.rounded-md {
+
+    border-radius: var(--radius-md);
+
+}
+
+
+.rounded-lg {
+
+    border-radius: var(--radius-lg);
+
+}
+
+
+.rounded-xl {
+
+    border-radius: var(--radius-xl);
+
+}
+
+
+.rounded-full {
+
+    border-radius: var(--radius-full);
+
+}
+
+
+/* ==========================================================
+   SHADOW
+========================================================== */
+
+.shadow-sm {
+
+    box-shadow: var(--shadow-sm);
+
+}
+
+
+.shadow-md {
+
+    box-shadow: var(--shadow-md);
+
+}
+
+
+.shadow-lg {
+
+    box-shadow: var(--shadow-lg);
+
+}
+
+
+.shadow-xl {
+
+    box-shadow: var(--shadow-xl);
+
+}
+
+
+/* ==========================================================
+   POSITION
+========================================================== */
+
+.relative {
+
+    position: relative;
+
+}
+
+
+.absolute {
+
+    position: absolute;
+
+}
+
+
+.fixed {
+
+    position: fixed;
+
+}
+
+
+.sticky {
+
+    position: sticky;
+
+}
+
+
+/* ==========================================================
+   OVERFLOW
+========================================================== */
+
+.overflow-hidden {
+
+    overflow: hidden;
+
+}
+
+
+.overflow-auto {
+
+    overflow: auto;
+
+}
+
+
+.overflow-x-auto {
+
+    overflow-x: auto;
+
+}
+
+
+.overflow-y-auto {
+
+    overflow-y: auto;
+
+}
+
+
+/* ==========================================================
+   CURSOR
+========================================================== */
+
+.cursor-pointer {
+
+    cursor: pointer;
+
+}
+
+
+.cursor-not-allowed {
+
+    cursor: not-allowed;
+
+}
+
+
+/* ==========================================================
+   USER SELECT
+========================================================== */
+
+.select-none {
+
+    user-select: none;
+
+}
+
+
+/* ==========================================================
+   OPACITY
+========================================================== */
+
+.opacity-0 {
+
+    opacity: 0;
+
+}
+
+
+.opacity-50 {
+
+    opacity: 0.5;
+
+}
+
+
+.opacity-75 {
+
+    opacity: 0.75;
+
+}
+
+
+.opacity-100 {
+
+    opacity: 1;
+
+}
+
+
+/* ==========================================================
+   INTERACTION
+========================================================== */
+
+.pointer-events-none {
+
+    pointer-events: none;
+
+}
+
+
+.pointer-events-auto {
+
+    pointer-events: auto;
+
+}
+
+
+/* ==========================================================
+   ACCESSIBILITY
+========================================================== */
+
+.sr-only {
+
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    padding: 0;
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+
+}
+
+
+/* ==========================================================
+   CONTAINER
+========================================================== */
+
+.container-sm {
+
+    width: min(
+        var(--container-sm),
+        calc(100% - 2rem)
+    );
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+.container-md {
+
+    width: min(
+        var(--container-md),
+        calc(100% - 2rem)
+    );
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+.container-lg {
+
+    width: min(
+        var(--container-lg),
+        calc(100% - 2rem)
+    );
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+.container-xl {
+
+    width: min(
+        var(--container-xl),
+        calc(100% - 2rem)
+    );
+
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+/* ==========================================================
+   RESPONSIVIDADE
+========================================================== */
+
+@media (max-width: 768px) {
+
+    .grid-4 {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+
+    .grid-3 {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+}
+
+
+@media (max-width: 480px) {
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
