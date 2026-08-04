@@ -3,235 +3,334 @@
    Controle de Gastos
 
    Componentes reutilizáveis da aplicação.
-   Este arquivo não deve conter estilos específicos de página.
+
+   Regra:
+   - componentes são genéricos;
+   - páginas não devem ser estilizadas aqui;
+   - nomes de componentes usam a convenção .component;
+   - estados usam modificadores como .button-primary.
 ========================================================== */
 
 
 /* ==========================================================
-   BUTTONS
+   BUTTON
 ========================================================== */
 
-.btn {
+.button {
 
     display: inline-flex;
 
-    align-items: center;
-    justify-content: center;
-
-    gap: var(--space-2);
-
-    min-height: var(--button-height);
+    min-height:
+        var(--button-height);
 
     padding:
         var(--space-3)
         var(--space-5);
 
-    border: 1px solid transparent;
-    border-radius: var(--radius-md);
+    align-items: center;
+    justify-content: center;
 
-    font-family: var(--font-family);
-    font-size: var(--font-size-md);
-    font-weight: var(--font-weight-semibold);
+    gap:
+        var(--space-2);
 
-    line-height: 1;
-    text-decoration: none;
+    border:
+        1px solid
+        transparent;
 
-    cursor: pointer;
-    user-select: none;
+    border-radius:
+        var(--radius-md);
+
+    font-family:
+        var(--font-family);
+
+    font-size:
+        var(--font-size-md);
+
+    font-weight:
+        var(--font-weight-semibold);
+
+    line-height:
+        1;
+
+    text-decoration:
+        none;
+
+    white-space:
+        nowrap;
+
+    cursor:
+        pointer;
+
+    user-select:
+        none;
 
     transition:
-        transform var(--duration-fast) var(--ease-standard),
-        background-color var(--duration-normal) var(--ease-standard),
-        border-color var(--duration-normal) var(--ease-standard),
-        color var(--duration-normal) var(--ease-standard),
-        box-shadow var(--duration-normal) var(--ease-standard),
-        opacity var(--duration-normal) var(--ease-standard);
-}
-
-
-/* ---------- Hover ---------- */
-
-.btn:hover:not(:disabled) {
-
-    transform: translateY(-2px);
-
-}
-
-
-/* ---------- Active ---------- */
-
-.btn:active:not(:disabled) {
-
-    transform: translateY(0) scale(0.98);
+        transform
+        var(--duration-fast)
+        var(--ease-standard),
+        background-color
+        var(--duration-normal)
+        var(--ease-standard),
+        border-color
+        var(--duration-normal)
+        var(--ease-standard),
+        color
+        var(--duration-normal)
+        var(--ease-standard),
+        box-shadow
+        var(--duration-normal)
+        var(--ease-standard),
+        opacity
+        var(--duration-normal)
+        var(--ease-standard);
 
 }
 
 
-/* ---------- Focus ---------- */
+/* ==========================================================
+   BUTTON — HOVER
+========================================================== */
 
-.btn:focus-visible {
+.button:hover:not(:disabled) {
 
-    outline: none;
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* ==========================================================
+   BUTTON — ACTIVE
+========================================================== */
+
+.button:active:not(:disabled) {
+
+    transform:
+        translateY(0)
+        scale(0.98);
+
+}
+
+
+/* ==========================================================
+   BUTTON — FOCUS
+========================================================== */
+
+.button:focus-visible {
+
+    outline:
+        none;
 
     box-shadow:
         0 0 0 3px
-        rgba(59, 130, 246, 0.25);
-
-}
-
-
-/* ---------- Disabled ---------- */
-
-.btn:disabled {
-
-    opacity: 0.55;
-
-    cursor: not-allowed;
-
-    transform: none;
+        rgba(
+            59,
+            130,
+            246,
+            0.25
+        );
 
 }
 
 
 /* ==========================================================
-   PRIMARY BUTTON
+   BUTTON — DISABLED
 ========================================================== */
 
-.btn-primary {
+.button:disabled {
 
-    background: var(--color-primary);
+    opacity:
+        0.55;
 
-    border-color: var(--color-primary);
+    cursor:
+        not-allowed;
 
-    color: #FFFFFF;
-
-}
-
-
-.btn-primary:hover:not(:disabled) {
-
-    background: var(--color-primary-hover);
-
-    border-color: var(--color-primary-hover);
+    transform:
+        none;
 
 }
 
 
 /* ==========================================================
-   DANGER BUTTON
+   BUTTON — PRIMARY
 ========================================================== */
 
-.btn-danger {
+.button-primary {
 
-    background: var(--color-danger);
+    border-color:
+        var(--color-primary);
 
-    border-color: var(--color-danger);
+    background:
+        var(--color-primary);
 
-    color: #FFFFFF;
+    color:
+        var(--color-white);
 
 }
 
 
-.btn-danger:hover:not(:disabled) {
+.button-primary:hover:not(:disabled) {
 
-    background: var(--color-danger-hover);
+    border-color:
+        var(--color-primary-hover);
 
-    border-color: var(--color-danger-hover);
+    background:
+        var(--color-primary-hover);
 
 }
 
 
 /* ==========================================================
-   SUCCESS BUTTON
+   BUTTON — DANGER
 ========================================================== */
 
-.btn-success {
+.button-danger {
 
-    background: var(--color-success);
+    border-color:
+        var(--color-danger);
 
-    border-color: var(--color-success);
+    background:
+        var(--color-danger);
 
-    color: #FFFFFF;
+    color:
+        var(--color-white);
 
 }
 
 
-.btn-success:hover:not(:disabled) {
+.button-danger:hover:not(:disabled) {
 
-    background: var(--color-success-hover);
+    border-color:
+        var(--color-danger-hover);
 
-    border-color: var(--color-success-hover);
+    background:
+        var(--color-danger-hover);
 
 }
 
 
 /* ==========================================================
-   OUTLINE BUTTON
+   BUTTON — SUCCESS
 ========================================================== */
 
-.btn-outline {
+.button-success {
 
-    background: transparent;
+    border-color:
+        var(--color-success);
 
-    border-color: var(--color-border);
+    background:
+        var(--color-success);
 
-    color: var(--color-text);
+    color:
+        var(--color-white);
 
 }
 
 
-.btn-outline:hover:not(:disabled) {
+.button-success:hover:not(:disabled) {
 
-    background: var(--color-surface-hover);
+    border-color:
+        var(--color-success-hover);
 
-    border-color: var(--color-border-hover);
+    background:
+        var(--color-success-hover);
 
 }
 
 
 /* ==========================================================
-   BLOCK BUTTON
+   BUTTON — OUTLINE
 ========================================================== */
 
-.btn-block {
+.button-outline {
 
-    width: 100%;
+    border-color:
+        var(--color-border);
+
+    background:
+        transparent;
+
+    color:
+        var(--color-text);
+
+}
+
+
+.button-outline:hover:not(:disabled) {
+
+    border-color:
+        var(--color-border-hover);
+
+    background:
+        var(--color-surface-hover);
 
 }
 
 
 /* ==========================================================
-   LOADING BUTTON
+   BUTTON — BLOCK
 ========================================================== */
 
-.btn.is-loading {
+.button-block {
 
-    position: relative;
-
-    color: transparent;
-
-    pointer-events: none;
+    width:
+        100%;
 
 }
 
 
-.btn.is-loading::after {
+/* ==========================================================
+   BUTTON — LOADING
+========================================================== */
 
-    position: absolute;
+.button.is-loading {
 
-    top: 50%;
-    left: 50%;
+    position:
+        relative;
 
-    width: 20px;
-    height: 20px;
+    color:
+        transparent;
 
-    border: 2px solid rgba(255, 255, 255, 0.35);
+    pointer-events:
+        none;
 
-    border-top-color: #FFFFFF;
+}
 
-    border-radius: var(--radius-full);
 
-    content: "";
+.button.is-loading::after {
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    left:
+        50%;
+
+    width:
+        20px;
+
+    height:
+        20px;
+
+    border:
+        2px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.35
+        );
+
+    border-top-color:
+        var(--color-white);
+
+    border-radius:
+        var(--radius-full);
+
+    content:
+        "";
 
     animation:
         spin
@@ -239,7 +338,8 @@
         linear
         infinite;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
 }
 
@@ -250,11 +350,14 @@
 
 .input-group {
 
-    display: flex;
+    display:
+        flex;
 
-    flex-direction: column;
+    flex-direction:
+        column;
 
-    gap: var(--space-2);
+    gap:
+        var(--space-2);
 
 }
 
@@ -265,74 +368,111 @@
 
 .input {
 
-    width: 100%;
+    width:
+        100%;
 
-    min-height: var(--input-height);
+    min-height:
+        var(--input-height);
 
     padding:
         var(--space-3)
         var(--space-4);
 
-    border: 1px solid var(--color-border);
+    border:
+        1px solid
+        var(--color-border);
 
-    border-radius: var(--radius-md);
+    border-radius:
+        var(--radius-md);
 
-    background: var(--color-surface);
+    background:
+        var(--color-surface);
 
-    color: var(--color-text);
+    color:
+        var(--color-text);
 
-    font-family: var(--font-family);
-    font-size: var(--font-size-md);
+    font-family:
+        var(--font-family);
 
-    outline: none;
+    font-size:
+        var(--font-size-md);
+
+    outline:
+        none;
 
     transition:
-        border-color var(--duration-normal) var(--ease-standard),
-        background-color var(--duration-normal) var(--ease-standard),
-        box-shadow var(--duration-normal) var(--ease-standard),
-        transform var(--duration-fast) var(--ease-standard);
+        border-color
+        var(--duration-normal)
+        var(--ease-standard),
+        background-color
+        var(--duration-normal)
+        var(--ease-standard),
+        box-shadow
+        var(--duration-normal)
+        var(--ease-standard),
+        transform
+        var(--duration-fast)
+        var(--ease-standard);
 
 }
 
 
-/* ---------- Placeholder ---------- */
+/* ==========================================================
+   INPUT — PLACEHOLDER
+========================================================== */
 
 .input::placeholder {
 
-    color: var(--color-text-muted);
+    color:
+        var(--color-text-muted);
 
 }
 
 
-/* ---------- Hover ---------- */
+/* ==========================================================
+   INPUT — HOVER
+========================================================== */
 
 .input:hover {
 
-    border-color: var(--color-border-hover);
+    border-color:
+        var(--color-border-hover);
 
 }
 
 
-/* ---------- Focus ---------- */
+/* ==========================================================
+   INPUT — FOCUS
+========================================================== */
 
 .input:focus {
 
-    border-color: var(--color-border-focus);
+    border-color:
+        var(--color-border-focus);
 
     box-shadow:
         0 0 0 4px
-        rgba(59, 130, 246, 0.15);
+        rgba(
+            59,
+            130,
+            246,
+            0.15
+        );
 
 }
 
 
-/* ---------- Disabled ---------- */
+/* ==========================================================
+   INPUT — DISABLED
+========================================================== */
 
 .input:disabled {
 
-    opacity: 0.6;
+    opacity:
+        0.6;
 
-    cursor: not-allowed;
+    cursor:
+        not-allowed;
 
 }
 
@@ -343,15 +483,20 @@
 
 .label {
 
-    display: block;
+    display:
+        block;
 
-    color: var(--color-text);
+    color:
+        var(--color-text);
 
-    font-size: var(--font-size-sm);
+    font-size:
+        var(--font-size-sm);
 
-    font-weight: var(--font-weight-semibold);
+    font-weight:
+        var(--font-weight-semibold);
 
-    line-height: 1.4;
+    line-height:
+        1.4;
 
 }
 
@@ -362,13 +507,15 @@
 
 .card {
 
-    padding: var(--space-6);
+    padding:
+        var(--space-6);
 
     border:
         1px solid
         var(--color-border);
 
-    border-radius: var(--radius-lg);
+    border-radius:
+        var(--radius-lg);
 
     background:
         var(--color-surface);
@@ -385,15 +532,15 @@
 
 .surface {
 
-    background:
-        var(--color-surface);
-
     border:
         1px solid
         var(--color-border);
 
     border-radius:
         var(--radius-lg);
+
+    background:
+        var(--color-surface);
 
     box-shadow:
         var(--shadow-md);
@@ -407,16 +554,21 @@
 
 .badge {
 
-    display: inline-flex;
+    display:
+        inline-flex;
 
-    align-items: center;
-    justify-content: center;
-
-    min-height: 24px;
+    min-height:
+        24px;
 
     padding:
         var(--space-1)
         var(--space-3);
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     border-radius:
         var(--radius-full);
@@ -427,12 +579,15 @@
     font-weight:
         var(--font-weight-semibold);
 
-    line-height: 1;
+    line-height:
+        1;
 
 }
 
 
-/* ---------- Success ---------- */
+/* ==========================================================
+   BADGE — SUCCESS
+========================================================== */
 
 .badge-success {
 
@@ -445,7 +600,9 @@
 }
 
 
-/* ---------- Danger ---------- */
+/* ==========================================================
+   BADGE — DANGER
+========================================================== */
 
 .badge-danger {
 
@@ -458,7 +615,9 @@
 }
 
 
-/* ---------- Warning ---------- */
+/* ==========================================================
+   BADGE — WARNING
+========================================================== */
 
 .badge-warning {
 
@@ -471,7 +630,9 @@
 }
 
 
-/* ---------- Info ---------- */
+/* ==========================================================
+   BADGE — INFO
+========================================================== */
 
 .badge-info {
 
@@ -490,13 +651,17 @@
 
 .alert {
 
-    display: flex;
+    display:
+        flex;
 
-    align-items: flex-start;
+    padding:
+        var(--space-4);
 
-    gap: var(--space-3);
+    align-items:
+        flex-start;
 
-    padding: var(--space-4);
+    gap:
+        var(--space-3);
 
     border:
         1px solid
@@ -508,20 +673,28 @@
     font-size:
         var(--font-size-sm);
 
-    line-height: 1.5;
+    line-height:
+        1.5;
 
 }
 
 
-/* ---------- Error ---------- */
+/* ==========================================================
+   ALERT — ERROR
+========================================================== */
 
 .alert-error {
 
+    border-color:
+        rgba(
+            239,
+            68,
+            68,
+            0.2
+        );
+
     background:
         var(--color-danger-background);
-
-    border-color:
-        rgba(239, 68, 68, 0.2);
 
     color:
         var(--color-danger);
@@ -529,15 +702,22 @@
 }
 
 
-/* ---------- Success ---------- */
+/* ==========================================================
+   ALERT — SUCCESS
+========================================================== */
 
 .alert-success {
 
+    border-color:
+        rgba(
+            34,
+            197,
+            94,
+            0.2
+        );
+
     background:
         var(--color-success-background);
-
-    border-color:
-        rgba(34, 197, 94, 0.2);
 
     color:
         var(--color-success);
@@ -545,15 +725,22 @@
 }
 
 
-/* ---------- Warning ---------- */
+/* ==========================================================
+   ALERT — WARNING
+========================================================== */
 
 .alert-warning {
 
+    border-color:
+        rgba(
+            245,
+            158,
+            11,
+            0.2
+        );
+
     background:
         var(--color-warning-background);
-
-    border-color:
-        rgba(245, 158, 11, 0.2);
 
     color:
         var(--color-warning);
@@ -561,15 +748,22 @@
 }
 
 
-/* ---------- Info ---------- */
+/* ==========================================================
+   ALERT — INFO
+========================================================== */
 
 .alert-info {
 
+    border-color:
+        rgba(
+            56,
+            189,
+            248,
+            0.2
+        );
+
     background:
         var(--color-info-background);
-
-    border-color:
-        rgba(56, 189, 248, 0.2);
 
     color:
         var(--color-info);
@@ -578,18 +772,22 @@
 
 
 /* ==========================================================
-   FORM ERROR
+   FIELD ERROR
 ========================================================== */
 
 .field-error {
 
-    margin-top: var(--space-1);
+    margin-top:
+        var(--space-1);
 
-    color: var(--color-danger);
+    color:
+        var(--color-danger);
 
-    font-size: var(--font-size-xs);
+    font-size:
+        var(--font-size-xs);
 
-    line-height: 1.4;
+    line-height:
+        1.4;
 
 }
 
@@ -600,14 +798,21 @@
 
 .feedback {
 
-    min-height: 20px;
+    min-height:
+        20px;
 
-    font-size: var(--font-size-sm);
+    font-size:
+        var(--font-size-sm);
 
-    font-weight: var(--font-weight-medium);
+    font-weight:
+        var(--font-weight-medium);
 
 }
 
+
+/* ==========================================================
+   FEEDBACK — STATES
+========================================================== */
 
 .feedback.success {
 
@@ -643,45 +848,56 @@
 
 /* ==========================================================
    VISUALLY HIDDEN
-
-   Utilizado para acessibilidade quando um elemento precisa
-   continuar disponível para leitores de tela sem aparecer
-   visualmente.
 ========================================================== */
 
 .visually-hidden {
 
-    position: absolute;
+    position:
+        absolute;
 
-    width: 1px;
-    height: 1px;
+    width:
+        1px;
 
-    padding: 0;
-    margin: -1px;
+    height:
+        1px;
 
-    overflow: hidden;
+    padding:
+        0;
 
-    clip: rect(0, 0, 0, 0);
+    margin:
+        -1px;
 
-    white-space: nowrap;
+    overflow:
+        hidden;
 
-    border: 0;
+    clip:
+        rect(
+            0,
+            0,
+            0,
+            0
+        );
+
+    white-space:
+        nowrap;
+
+    border:
+        0;
 
 }
 
 
 /* ==========================================================
    REDUCED MOTION
-
-   Respeita a preferência do usuário por menos movimento.
 ========================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
-    .btn,
+    .button,
     .input {
 
-        transition: none;
+        transition:
+            none;
 
     }
 

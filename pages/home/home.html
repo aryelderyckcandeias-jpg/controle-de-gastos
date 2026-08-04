@@ -1,94 +1,828 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Painel financeiro do Controle de Gastos: acompanhe seu resumo de gastos.">
-    <meta name="theme-color" content="#102a24">
-    <title>Visão geral | Controle de Gastos</title>
-    <link rel="stylesheet" href="../../global.css">
-    <link rel="stylesheet" href="home.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Painel financeiro do Controle de Gastos: acompanhe seu resumo de gastos."
+    >
+
+    <meta
+        name="theme-color"
+        content="#0F172A"
+    >
+
+    <title>
+        Visão geral | Controle de Gastos
+    </title>
+
+
+    <!-- ==================================================
+         DESIGN SYSTEM
+    =================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/variables.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/reset.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/utilities.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/animations.css"
+    >
+
+
+    <!-- ==================================================
+         ESTILOS DA PÁGINA
+    =================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="./home.css"
+    >
+
 </head>
+
+
 <body>
+
+    <!-- ==================================================
+         TOPO
+    =================================================== -->
+
     <header class="topbar">
+
         <div class="topbar-inner">
-            <a class="brand" href="home.html" aria-label="Controle de Gastos, visão geral">
-                <span class="brand-mark" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none">
-                        <path d="M5 17V11M12 17V7M19 17V4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-                        <path d="M3 20h18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+
+            <a
+                class="brand"
+                href="home.html"
+                aria-label="Controle de Gastos, visão geral"
+            >
+
+                <span
+                    class="brand-mark"
+                    aria-hidden="true"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                    >
+
+                        <path
+                            d="M5 17V11M12 17V7M19 17V4"
+                            stroke="currentColor"
+                            stroke-width="2.2"
+                            stroke-linecap="round"
+                        />
+
+                        <path
+                            d="M3 20h18"
+                            stroke="currentColor"
+                            stroke-width="2.2"
+                            stroke-linecap="round"
+                        />
+
                     </svg>
+
                 </span>
-                <span class="brand-name">Controle de Gastos</span>
+
+                <span class="brand-name">
+                    Controle de Gastos
+                </span>
+
             </a>
-            <nav class="main-nav" aria-label="Navegação principal">
-                <a class="active" href="home.html"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>Visão geral</a>
-                <a href="#resumo"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V9M10 19V5M16 19v-7M22 19V3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Relatórios</a>
+
+
+            <!-- Navegação -->
+
+            <nav
+                class="main-nav"
+                aria-label="Navegação principal"
+            >
+
+                <a
+                    class="active"
+                    href="#resumo"
+                    aria-current="page"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+
+                        <rect
+                            x="3"
+                            y="3"
+                            width="7"
+                            height="7"
+                            rx="2"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                        />
+
+                        <rect
+                            x="14"
+                            y="3"
+                            width="7"
+                            height="7"
+                            rx="2"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                        />
+
+                        <rect
+                            x="3"
+                            y="14"
+                            width="7"
+                            height="7"
+                            rx="2"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                        />
+
+                        <rect
+                            x="14"
+                            y="14"
+                            width="7"
+                            height="7"
+                            rx="2"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                        />
+
+                    </svg>
+
+                    <span>
+                        Visão geral
+                    </span>
+
+                </a>
+
+
+                <a href="#resumo">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M4 19V9M10 19V5M16 19v-7M22 19V3"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                        />
+
+                    </svg>
+
+                    <span>
+                        Relatórios
+                    </span>
+
+                </a>
+
             </nav>
+
+
+            <!-- Usuário -->
+
             <div class="user-area">
-                <span class="online-dot" title="Sessão ativa"></span>
-                <span id="user-information">Verificando sessão...</span>
-                <button type="button" id="logout-button" class="logout-button" aria-label="Sair da conta" title="Sair">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M14 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-3M10 12h11M18 9l3 3-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+                <span
+                    class="online-dot"
+                    title="Sessão ativa"
+                    aria-hidden="true"
+                ></span>
+
+                <span
+                    id="user-information"
+                    aria-live="polite"
+                >
+                    Verificando sessão...
+                </span>
+
+                <button
+                    type="button"
+                    id="logout-button"
+                    class="logout-button"
+                    aria-label="Sair da conta"
+                    title="Sair"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M14 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-3M10 12h11M18 9l3 3-3 3"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                    </svg>
+
                 </button>
+
             </div>
+
         </div>
+
     </header>
 
+
+    <!-- ==================================================
+         CONTEÚDO PRINCIPAL
+    =================================================== -->
+
     <main class="container">
+
+        <!-- Cabeçalho -->
+
         <section class="welcome-row">
+
             <div>
-                <span class="page-kicker">PAINEL FINANCEIRO</span>
-                <h1>Visão geral</h1>
-                <p>Acompanhe os números mais importantes das suas finanças.</p>
+
+                <span class="page-kicker">
+                    PAINEL FINANCEIRO
+                </span>
+
+                <h1>
+                    Visão geral
+                </h1>
+
+                <p>
+                    Acompanhe os números mais importantes
+                    das suas finanças.
+                </p>
+
             </div>
+
+
             <div class="date-chip">
-                <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 3v4M16 3v4M3 10h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-                <span>Resumo atualizado</span>
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                >
+
+                    <rect
+                        x="3"
+                        y="5"
+                        width="18"
+                        height="16"
+                        rx="3"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                    />
+
+                    <path
+                        d="M8 3v4M16 3v4M3 10h18"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                    />
+
+                </svg>
+
+                <span>
+                    Resumo atualizado
+                </span>
+
             </div>
+
         </section>
 
-        <section class="summary-card" id="resumo">
+
+        <!-- ==================================================
+             RESUMO
+        =================================================== -->
+
+        <section
+            class="summary-card"
+            id="resumo"
+        >
+
+            <!-- Cabeçalho do card -->
+
             <div class="card-header">
-                <div><span class="section-kicker">DESEMPENHO</span><h2>Resumo dos gastos</h2></div>
-                <span id="cache-badge" class="cache-badge empty">Aguardando</span>
-            </div>
 
-            <div class="values-grid">
-                <article class="value-box total-box">
-                    <span class="metric-icon wallet"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6.5h14a2 2 0 0 1 2 2v10H5a2 2 0 0 1-2-2v-12a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 11h5v4h-5a2 2 0 1 1 0-4Z" stroke="currentColor" stroke-width="1.8"/></svg></span>
-                    <div><span class="value-label">Total de gastos</span><strong id="total-gastos">R$ --</strong><small>Valor consolidado do período</small></div>
-                    <span class="metric-decoration"></span>
-                </article>
-                <article class="value-box">
-                    <span class="metric-icon receipt"><svg viewBox="0 0 24 24" fill="none"><path d="M6 3v18l3-2 3 2 3-2 3 2V3l-3 2-3-2-3 2-3-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 10h6M9 14h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-                    <div><span class="value-label">Quantidade de gastos</span><strong id="quantidade-gastos">--</strong><small>Lançamentos registrados</small></div>
-                </article>
-            </div>
+                <div>
 
-            <div class="details-grid">
-                <div class="cache-details">
-                    <div class="detail-item"><span class="detail-icon"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5" rx="8" ry="3" stroke="currentColor" stroke-width="1.7"/><path d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7" stroke="currentColor" stroke-width="1.7"/></svg></span><div><span>Fonte dos dados</span><strong id="data-source">--</strong></div></div>
-                    <div class="detail-item"><span class="detail-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="13" r="8" stroke="currentColor" stroke-width="1.7"/><path d="M12 9v4l3 2M9 2h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><div><span>Tempo de resposta</span><strong id="response-time">--</strong></div></div>
-                    <div class="detail-item"><span class="detail-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-2.34-5.66L20 8.68" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M20 4v4.68h-4.68" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span>Gerado em</span><strong id="generated-at">--</strong></div></div>
+                    <span class="section-kicker">
+                        DESEMPENHO
+                    </span>
+
+                    <h2>
+                        Resumo dos gastos
+                    </h2>
+
                 </div>
 
-                <aside class="cache-guide">
-                    <span class="guide-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a7 7 0 0 0-4 12.74V19h8v-3.26A7 7 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.7"/><path d="M9 22h6M9 15h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
-                    <div><strong>Como funciona o cache?</strong><p><b>HIT</b> indica dados vindos do Redis. <b>MISS</b> significa que o backend gerou dados novos.</p></div>
-                </aside>
+                <span
+                    id="cache-badge"
+                    class="cache-badge empty"
+                >
+                    Aguardando
+                </span>
+
             </div>
 
-            <div id="status-message" class="status-message loading" role="status" aria-live="polite"><span>Carregando os dados...</span></div>
+
+            <!-- ==================================================
+                 MÉTRICAS
+            =================================================== -->
+
+            <div class="values-grid">
+
+                <!-- Total -->
+
+                <article
+                    class="value-box total-box"
+                >
+
+                    <span
+                        class="metric-icon wallet"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                        >
+
+                            <path
+                                d="M4 6.5h14a2 2 0 0 1 2 2v10H5a2 2 0 0 1-2-2v-12a2 2 0 0 1 2-2h11"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
+
+                            <path
+                                d="M16 11h5v4h-5a2 2 0 1 1 0-4Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            />
+
+                        </svg>
+
+                    </span>
+
+
+                    <div>
+
+                        <span class="value-label">
+                            Total de gastos
+                        </span>
+
+                        <strong id="total-gastos">
+                            R$ --
+                        </strong>
+
+                        <small>
+                            Valor consolidado do período
+                        </small>
+
+                    </div>
+
+
+                    <span
+                        class="metric-decoration"
+                        aria-hidden="true"
+                    ></span>
+
+                </article>
+
+
+                <!-- Quantidade -->
+
+                <article class="value-box">
+
+                    <span
+                        class="metric-icon receipt"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                        >
+
+                            <path
+                                d="M6 3v18l3-2 3 2 3-2 3 2V3l-3 2-3-2-3 2-3-2Z"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linejoin="round"
+                            />
+
+                            <path
+                                d="M9 10h6M9 14h4"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
+
+                        </svg>
+
+                    </span>
+
+
+                    <div>
+
+                        <span class="value-label">
+                            Quantidade de gastos
+                        </span>
+
+                        <strong id="quantidade-gastos">
+                            --
+                        </strong>
+
+                        <small>
+                            Lançamentos registrados
+                        </small>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- ==================================================
+                 DETALHES
+            =================================================== -->
+
+            <div class="details-grid">
+
+                <div class="cache-details">
+
+                    <!-- Fonte -->
+
+                    <div class="detail-item">
+
+                        <span
+                            class="detail-icon"
+                            aria-hidden="true"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                            >
+
+                                <ellipse
+                                    cx="12"
+                                    cy="5"
+                                    rx="8"
+                                    ry="3"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                />
+
+                                <path
+                                    d="M4 5v7c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12v7c0 1.7 3.6 3 8 3s8-1.3 8-3v-7"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                />
+
+                            </svg>
+
+                        </span>
+
+
+                        <div>
+
+                            <span>
+                                Fonte dos dados
+                            </span>
+
+                            <strong id="data-source">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Tempo -->
+
+                    <div class="detail-item">
+
+                        <span
+                            class="detail-icon"
+                            aria-hidden="true"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                            >
+
+                                <circle
+                                    cx="12"
+                                    cy="13"
+                                    r="8"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                />
+
+                                <path
+                                    d="M12 9v4l3 2M9 2h6"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                />
+
+                            </svg>
+
+                        </span>
+
+
+                        <div>
+
+                            <span>
+                                Tempo de resposta
+                            </span>
+
+                            <strong id="response-time">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Data -->
+
+                    <div class="detail-item">
+
+                        <span
+                            class="detail-icon"
+                            aria-hidden="true"
+                        >
+
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                            >
+
+                                <path
+                                    d="M20 12a8 8 0 1 1-2.34-5.66L20 8.68"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+
+                                <path
+                                    d="M20 4v4.68h-4.68"
+                                    stroke="currentColor"
+                                    stroke-width="1.7"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+
+                            </svg>
+
+                        </span>
+
+
+                        <div>
+
+                            <span>
+                                Gerado em
+                            </span>
+
+                            <strong id="generated-at">
+                                --
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     GUIA DO CACHE
+                =================================================== -->
+
+                <aside class="cache-guide">
+
+                    <span
+                        class="guide-icon"
+                        aria-hidden="true"
+                    >
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                        >
+
+                            <path
+                                d="M12 3a7 7 0 0 0-4 12.74V19h8v-3.26A7 7 0 0 0 12 3Z"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                            />
+
+                            <path
+                                d="M9 22h6M9 15h6"
+                                stroke="currentColor"
+                                stroke-width="1.7"
+                                stroke-linecap="round"
+                            />
+
+                        </svg>
+
+                    </span>
+
+
+                    <div>
+
+                        <strong>
+                            Como funciona o cache?
+                        </strong>
+
+                        <p>
+                            <b>HIT</b> indica dados vindos
+                            do Redis.
+                            <b>MISS</b> significa que o
+                            backend gerou dados novos.
+                        </p>
+
+                    </div>
+
+                </aside>
+
+            </div>
+
+
+            <!-- ==================================================
+                 STATUS
+            =================================================== -->
+
+            <div
+                id="status-message"
+                class="status-message loading"
+                role="status"
+                aria-live="polite"
+            >
+
+                <span>
+                    Carregando os dados...
+                </span>
+
+            </div>
+
+
+            <!-- ==================================================
+                 AÇÕES
+            =================================================== -->
 
             <div class="actions">
-                <button type="button" id="reload-button" class="button button-primary"><svg class="icon-refresh" viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-2.34-5.66L20 8.68" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 4v4.68h-4.68" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Consultar novamente</button>
-                <button type="button" id="clear-cache-button" class="button button-danger"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M9 3h6l1 4H8l1-4ZM7 7l1 14h8l1-14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Limpar cache</button>
+
+                <button
+                    type="button"
+                    id="reload-button"
+                    class="button button-primary"
+                >
+
+                    <svg
+                        class="icon-refresh"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M20 12a8 8 0 1 1-2.34-5.66L20 8.68"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                        />
+
+                        <path
+                            d="M20 4v4.68h-4.68"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                    </svg>
+
+                    <span>
+                        Consultar novamente
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    id="clear-cache-button"
+                    class="button button-danger"
+                >
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        aria-hidden="true"
+                    >
+
+                        <path
+                            d="M4 7h16M9 3h6l1 4H8l1-4ZM7 7l1 14h8l1-14"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+
+                    </svg>
+
+                    <span>
+                        Limpar cache
+                    </span>
+
+                </button>
+
             </div>
+
         </section>
 
-        <footer class="page-footer"><span>© 2026 Controle de Gastos</span><span><i></i> Todos os sistemas operacionais</span></footer>
+
+        <!-- ==================================================
+             RODAPÉ
+        =================================================== -->
+
+        <footer class="page-footer">
+
+            <span>
+                © 2026 Controle de Gastos
+            </span>
+
+            <span>
+
+                <i aria-hidden="true"></i>
+
+                Todos os sistemas operacionais
+
+            </span>
+
+        </footer>
+
     </main>
-    <script src="home.js"></script>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    =================================================== -->
+
+    <script
+        src="./home.js"
+        defer
+    ></script>
+
 </body>
+
 </html>

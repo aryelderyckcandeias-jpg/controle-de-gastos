@@ -5,167 +5,339 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <title>Controle de Gastos</title>
+    <meta
+        name="description"
+        content="Entre na sua conta do Controle de Gastos."
+    >
 
-    <!-- Google Fonts -->
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    <meta
+        name="theme-color"
+        content="#0F172A"
+    >
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    <title>
+        Entrar | Controle de Gastos
+    </title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
 
-    <!-- Design System -->
+    <!-- ==================================================
+         FONTES
+    =================================================== -->
 
-    <link rel="stylesheet"
-          href="../../assets/css/variables.css">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
 
-    <link rel="stylesheet"
-          href="../../assets/css/reset.css">
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
-    <link rel="stylesheet"
-          href="../../assets/css/global.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
 
-    <link rel="stylesheet"
-          href="../../assets/css/components.css">
 
-    <link rel="stylesheet"
-          href="../../assets/css/animations.css">
+    <!-- ==================================================
+         DESIGN SYSTEM
+    =================================================== -->
 
-    <!-- Página -->
+    <link
+        rel="stylesheet"
+        href="../../assets/css/variables.css"
+    >
 
-    <link rel="stylesheet"
-          href="./login.css">
+    <link
+        rel="stylesheet"
+        href="../../assets/css/reset.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/components.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../assets/css/animations.css"
+    >
+
+
+    <!-- ==================================================
+         ESTILOS DA PÁGINA
+    =================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="./login.css"
+    >
 
 </head>
+
 
 <body>
 
     <main class="login-page">
 
-        <!-- Background decorativo -->
 
-        <div class="background-blur background-left"></div>
+        <!-- ==================================================
+             DECORAÇÃO DO BACKGROUND
+        =================================================== -->
 
-        <div class="background-blur background-right"></div>
+        <div
+            class="background-blur background-left"
+            aria-hidden="true"
+        ></div>
 
-        <!-- Card -->
+        <div
+            class="background-blur background-right"
+            aria-hidden="true"
+        ></div>
 
-        <section class="login-card card slide-up">
 
-            <!-- Logo -->
+        <!-- ==================================================
+             CARD DE LOGIN
+        =================================================== -->
+
+        <section
+            class="login-card card"
+            aria-labelledby="login-title"
+        >
+
+
+            <!-- ==================================================
+                 LOGO
+            =================================================== -->
 
             <div class="logo-container">
 
-                <div class="logo">
-
+                <div
+                    class="logo"
+                    aria-hidden="true"
+                >
                     CG
-
                 </div>
 
             </div>
 
-            <h1 class="login-title">
 
-                Controle de Gastos
+            <!-- ==================================================
+                 CABEÇALHO
+            =================================================== -->
 
-            </h1>
+            <header class="login-header">
 
-            <p class="login-subtitle">
+                <p class="login-eyebrow">
+                    CONTROLE DE GASTOS
+                </p>
 
-                Organize sua vida financeira de forma simples.
+                <h1
+                    id="login-title"
+                    class="login-title"
+                >
+                    Bem-vindo de volta
+                </h1>
 
-            </p>
+                <p class="login-subtitle">
+                    Entre na sua conta para continuar
+                    acompanhando sua vida financeira.
+                </p>
 
-            <!-- Formulário -->
+            </header>
+
+
+            <!-- ==================================================
+                 FORMULÁRIO
+            =================================================== -->
 
             <form
                 id="login-form"
-                class="login-form">
+                class="login-form"
+                novalidate
+            >
 
-                <div class="input-group">
 
-                    <label
-                        class="label"
-                        for="email">
-
-                        Email
-
-                    </label>
-
-                    <input
-
-                        id="email"
-
-                        class="input"
-
-                        type="email"
-
-                        placeholder="Digite seu email"
-
-                        autocomplete="email"
-
-                        required>
-
-                </div>
-
-                <div class="input-group">
-
-                    <label
-                        class="label"
-                        for="password">
-
-                        Senha
-
-                    </label>
-
-                    <input
-
-                        id="password"
-
-                        class="input"
-
-                        type="password"
-
-                        placeholder="Digite sua senha"
-
-                        autocomplete="current-password"
-
-                        required>
-
-                </div>
-
-                <!-- Mensagem de erro -->
+                <!-- ==================================================
+                     EMAIL
+                =================================================== -->
 
                 <div
-                    id="login-error"
-                    class="alert alert-error hidden">
+                    id="email-group"
+                    class="input-group"
+                >
+
+                    <label
+                        class="label"
+                        for="email"
+                    >
+                        Email
+                    </label>
+
+
+                    <input
+                        id="email"
+                        class="input"
+                        type="email"
+                        name="email"
+                        placeholder="Digite seu email"
+                        autocomplete="email"
+                        inputmode="email"
+                        aria-describedby="email-required-error email-invalid-error"
+                        aria-invalid="false"
+                        required
+                    >
+
+
+                    <p
+                        id="email-required-error"
+                        class="field-error"
+                        hidden
+                    >
+                        Informe seu email.
+                    </p>
+
+
+                    <p
+                        id="email-invalid-error"
+                        class="field-error"
+                        hidden
+                    >
+                        Digite um email válido.
+                    </p>
 
                 </div>
 
-                <!-- Botão -->
+
+                <!-- ==================================================
+                     SENHA
+                =================================================== -->
+
+                <div
+                    id="password-group"
+                    class="input-group"
+                >
+
+                    <div class="password-label-row">
+
+                        <label
+                            class="label"
+                            for="password"
+                        >
+                            Senha
+                        </label>
+
+
+                        <button
+                            id="recover-password-button"
+                            class="text-button"
+                            type="button"
+                            disabled
+                        >
+                            Esqueci minha senha
+                        </button>
+
+                    </div>
+
+
+                    <div class="password-input-wrap">
+
+                        <input
+                            id="password"
+                            class="input"
+                            type="password"
+                            name="password"
+                            placeholder="Digite sua senha"
+                            autocomplete="current-password"
+                            aria-describedby="password-required-error password-invalid-error"
+                            aria-invalid="false"
+                            required
+                        >
+
+
+                        <button
+                            id="toggle-password-button"
+                            class="password-toggle"
+                            type="button"
+                            aria-label="Mostrar senha"
+                            aria-pressed="false"
+                        >
+                            Mostrar
+                        </button>
+
+                    </div>
+
+
+                    <p
+                        id="password-required-error"
+                        class="field-error"
+                        hidden
+                    >
+                        Informe sua senha.
+                    </p>
+
+
+                    <p
+                        id="password-invalid-error"
+                        class="field-error"
+                        hidden
+                    >
+                        A senha deve possuir pelo menos
+                        6 caracteres.
+                    </p>
+
+                </div>
+
+
+                <!-- ==================================================
+                     MENSAGEM DO LOGIN
+                =================================================== -->
+
+                <div
+                    id="login-message"
+                    class="feedback"
+                    role="status"
+                    aria-live="polite"
+                    hidden
+                ></div>
+
+
+                <!-- ==================================================
+                     BOTÃO ENTRAR
+                =================================================== -->
 
                 <button
-
                     id="login-button"
-
+                    class="button button-primary button-block"
                     type="submit"
-
-                    class="btn btn-primary hover-lift">
-
+                    disabled
+                >
                     Entrar
-
                 </button>
 
             </form>
 
-            <div class="login-divider">
+
+            <!-- ==================================================
+                 DIVISOR
+            =================================================== -->
+
+            <div
+                class="login-divider"
+                aria-hidden="true"
+            >
 
                 <span></span>
 
@@ -175,22 +347,28 @@
 
             </div>
 
-            <a
 
-                class="btn btn-outline"
+            <!-- ==================================================
+                 CADASTRO
+            =================================================== -->
 
-                href="../register/register.html">
+            <button
+                id="register-button"
+                class="button button-outline button-block"
+                type="button"
+            >
+                Criar uma conta
+            </button>
 
-                Criar conta
 
-            </a>
+            <!-- ==================================================
+                 RODAPÉ
+            =================================================== -->
 
             <footer class="login-footer">
 
                 <p>
-
                     Desenvolvido por Ary Elderyck
-
                 </p>
 
             </footer>
@@ -199,7 +377,15 @@
 
     </main>
 
-    <script src="./login.js"></script>
+
+    <!-- ==================================================
+         JAVASCRIPT DA PÁGINA
+    =================================================== -->
+
+    <script
+        src="./login.js"
+        defer
+    ></script>
 
 </body>
 
