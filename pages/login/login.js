@@ -13,7 +13,7 @@
  * - redirecionar para Home
  * - abrir cadastro
  *
- * Este arquivo não depende de validations.js.
+ * Este módulo não depende de validations.js.
  * =====================================================
  */
 
@@ -113,13 +113,8 @@ const state = {
  * VALIDAÇÃO DE EMAIL
  * =====================================================
  *
- * A validação pertence ao módulo de login.
- *
- * Não dependemos mais de:
- *
- * validations.js
- *
- * Isso evita uma dependência global desnecessária.
+ * Esta função substitui a dependência antiga
+ * de validations.js.
  * =====================================================
  */
 
@@ -130,9 +125,13 @@ function validateEmail(email) {
             .trim()
             .toLowerCase();
 
+
     if (!normalizedEmail) {
+
         return false;
+
     }
+
 
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
         .test(normalizedEmail);
@@ -204,7 +203,7 @@ function getPasswordError() {
 
 /*
  * =====================================================
- * RENDERIZA VALIDAÇÃO DO EMAIL
+ * VALIDAÇÃO VISUAL DO EMAIL
  * =====================================================
  */
 
@@ -257,7 +256,7 @@ function renderEmailValidation() {
 
 /*
  * =====================================================
- * RENDERIZA VALIDAÇÃO DA SENHA
+ * VALIDAÇÃO VISUAL DA SENHA
  * =====================================================
  */
 
@@ -326,7 +325,7 @@ function isFormValid() {
 
 /*
  * =====================================================
- * ATUALIZA BOTÕES
+ * ATUALIZA ESTADO DOS BOTÕES
  * =====================================================
  */
 
@@ -350,7 +349,7 @@ function updateButtons() {
 
 /*
  * =====================================================
- * MENSAGENS
+ * FEEDBACK
  * =====================================================
  */
 
@@ -447,7 +446,7 @@ async function handleLogin(event) {
 
 
     /*
-     * Impede envio com formulário inválido.
+     * Não permite enviar formulário inválido.
      */
 
     if (!isFormValid()) {
@@ -516,18 +515,9 @@ async function handleLogin(event) {
             );
 
 
-        /*
-         * Tenta interpretar a resposta
-         * como JSON.
-         */
-
         const result =
             await response.json();
 
-
-        /*
-         * Backend recusou o login.
-         */
 
         if (!response.ok) {
 
@@ -549,12 +539,6 @@ async function handleLogin(event) {
         );
 
 
-        /*
-         * Pequeno intervalo para que
-         * a mensagem de sucesso seja
-         * percebida pelo usuário.
-         */
-
         window.setTimeout(
             () => {
 
@@ -564,6 +548,7 @@ async function handleLogin(event) {
             },
             350
         );
+
 
     } catch (error) {
 
@@ -594,7 +579,7 @@ async function handleLogin(event) {
 
 /*
  * =====================================================
- * EVENTOS — EMAIL
+ * EMAIL — INPUT
  * =====================================================
  */
 
@@ -624,6 +609,12 @@ elements.email.addEventListener(
 );
 
 
+/*
+ * =====================================================
+ * EMAIL — BLUR
+ * =====================================================
+ */
+
 elements.email.addEventListener(
     "blur",
     () => {
@@ -642,7 +633,7 @@ elements.email.addEventListener(
 
 /*
  * =====================================================
- * EVENTOS — SENHA
+ * SENHA — INPUT
  * =====================================================
  */
 
@@ -671,6 +662,12 @@ elements.password.addEventListener(
     }
 );
 
+
+/*
+ * =====================================================
+ * SENHA — BLUR
+ * =====================================================
+ */
 
 elements.password.addEventListener(
     "blur",
@@ -738,10 +735,6 @@ elements.togglePasswordButton.addEventListener(
  * =====================================================
  * RECUPERAÇÃO DE SENHA
  * =====================================================
- *
- * A funcionalidade real será implementada
- * posteriormente.
- * =====================================================
  */
 
 elements.recoverPasswordButton.addEventListener(
@@ -776,7 +769,7 @@ elements.registerButton.addEventListener(
 
 /*
  * =====================================================
- * ENVIO DO FORMULÁRIO
+ * FORMULÁRIO
  * =====================================================
  */
 
