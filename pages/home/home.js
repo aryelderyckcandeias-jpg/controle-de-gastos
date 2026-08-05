@@ -47,11 +47,13 @@ async function checkSession() {
             }
         );
 
-        if (!response.ok) {
-            window.location.replace("/");
-            return false;
-        }
+       if (!response.ok) {
+    window.location.replace(
+        "/pages/login/login.html"
+    );
 
+    return false;
+}
         const result = await response.json();
 
         userInformationElement.textContent =
@@ -85,8 +87,9 @@ async function logout() {
     } catch (error) {
         console.error(error);
     } finally {
-        window.location.replace("/");
-    }
+    window.location.replace(
+        "/pages/login/login.html"
+    );}
 }
 /*
  * Formata um valor como moeda brasileira.

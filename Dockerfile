@@ -1,18 +1,35 @@
-# Imagem que servirá os arquivos HTML/CSS/JS
+# ==========================================================
+# FRONTEND
+# Controle de Gastos
+#
+# O container frontend serve somente arquivos estáticos.
+#
+# O roteamento da aplicação é responsabilidade do
+# nginx-proxy definido no docker-compose.
+# ==========================================================
+
+
 FROM nginx:alpine
 
-# Copia os arquivos da página inicial
-COPY index.html /usr/share/nginx/html/
-COPY index.js /usr/share/nginx/html/
-COPY index.css /usr/share/nginx/html/
-COPY global.css /usr/share/nginx/html/
-COPY validations.js /usr/share/nginx/html/
 
-# Copia todas as páginas da pasta pages
+# ==========================================================
+# ARQUIVOS DO FRONTEND
+# ==========================================================
+
 COPY pages/ /usr/share/nginx/html/pages/
 
-# Porta utilizada pelo Nginx
+COPY assets/ /usr/share/nginx/html/assets/
+
+
+# ==========================================================
+# PORTA
+# ==========================================================
+
 EXPOSE 80
 
-# Inicia o Nginx
+
+# ==========================================================
+# NGINX
+# ==========================================================
+
 CMD ["nginx", "-g", "daemon off;"]
