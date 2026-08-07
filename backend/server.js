@@ -3,6 +3,10 @@ import session from "express-session";
 import { RedisStore } from "connect-redis";
 import { createClient } from "redis";
 
+import {
+    checkDatabaseConnection,
+    closeDatabase
+} from "./db.js";
 /*
  * Configurações da aplicação.
  */
@@ -83,6 +87,105 @@ try {
 
     process.exit(1);
 }
+
+/*
+ * =====================================================
+ * CONEXÃO COM POSTGRESQL
+ * =====================================================
+ */
+
+try {
+
+    const database =
+        await checkDatabaseConnection();
+
+
+    console.log(
+        "Backend conectado ao PostgreSQL."
+    );
+
+
+    console.log(
+        "Horário do PostgreSQL:",
+        database.now
+    );
+
+} catch (error) {
+
+    console.error(
+        "Não foi possível conectar ao PostgreSQL:",
+        error.message
+    );
+
+
+    await redisClient.quit();
+
+    await closeDatabase();
+
+    process.exit(1);
+
+}
+
+
+/*
+ * =====================================================
+ * SAÚDE DO POSTGRESQL
+ * =====================================================
+ */
+
+app.get(
+    "/api/database/health",
+    async (request, response) => {
+
+        try {
+
+            const database =
+                await checkDatabaseConnection();
+
+
+            response.json({
+
+                status: "online",
+
+                database:
+                    "postgresql",
+
+                connected:
+                    true,
+
+                serverTime:
+                    database.now
+
+            });
+
+        } catch (error) {
+
+            console.error(
+                "Erro ao verificar PostgreSQL:",
+                error.message
+            );
+
+
+            response.status(503).json({
+
+                status:
+                    "offline",
+
+                database:
+                    "postgresql",
+
+                connected:
+                    false,
+
+                message:
+                    "Não foi possível conectar ao PostgreSQL."
+
+            });
+
+        }
+
+    }
+);
 
 /*
  * Cria o armazenamento de sessões no Redis.

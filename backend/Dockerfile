@@ -1,20 +1,20 @@
-# Imagem que já possui o Node.js instalado
+# Imagem Node.js
 FROM node:24-alpine
 
-# Cria e acessa a pasta /app dentro do container
+# Diretório da aplicação
 WORKDIR /app
 
-# Copia o package.json
+# Dependências
 COPY package*.json ./
 
-# Instala o Express
 RUN npm install --omit=dev
 
-# Copia o código do backend
+# Código da aplicação
 COPY server.js ./
+COPY db.js ./
 
-# Documenta que o backend utiliza a porta 3000
+# Porta do backend
 EXPOSE 3000
 
-# Inicia o backend
+# Inicialização
 CMD ["npm", "start"]
