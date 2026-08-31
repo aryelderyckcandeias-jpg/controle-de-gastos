@@ -95,8 +95,14 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
 
+      # Banco dedicado do JasperReports Server (criado no 1º boot).
+      JASPER_DB_USER: ${JASPER_DB_USER:-jasper}
+      JASPER_DB_PASSWORD: ${JASPER_DB_PASSWORD:-jasperpass}
+      JASPER_DB_NAME: ${JASPER_DB_NAME:-jasperserver}
+
     volumes:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init-jasper.sh:/docker-entrypoint-initdb.d/init-jasper.sh
       - postgres_data:/var/lib/postgresql/data
 
     ports:
@@ -158,6 +164,56 @@ services:
 
     networks:
       - backend
+
+    restart: unless-stopped
+
+
+  # ============================================================
+  # JASPERREPORTS SERVER (RELATÓRIOS)
+  #
+  # Servidor de relatórios (Java/Tomcat) - Community Edition.
+  # Usa uma imagem de comunidade mantida por terceiros no
+  # Docker Hub, já que a imagem oficial da Jaspersoft não é
+  # mais publicada lá (é preciso buildar manualmente).
+  #
+  # O repositório dos relatórios é o banco 'jasperserver',
+  # criado no primeiro boot pelo script ./init-jasper.sh
+  # dentro do Postgres da aplicação.
+  # ============================================================
+
+  jasperserver:
+    container_name: jasperserver-reports
+
+    image: judahpaul/jasperserver:latest
+
+    environment:
+      # Tipo e conexão com o banco de repositório.
+      DB_TYPE: postgresql
+      DB_HOST: postgres
+      DB_PORT: "5432"
+      DB_NAME: ${JASPER_DB_NAME:-jasperserver}
+      DB_USER: ${JASPER_DB_USER:-jasper}
+      DB_PASSWORD: ${JASPER_DB_PASSWORD:-jasperpass}
+
+    ports:
+      # Interface web do JasperReports Server.
+      # Acesse em http://localhost:8080/jasperserver
+      - "8080:8080"
+
+    depends_on:
+      - postgres
+
+    labels:
+      - "com.example.project=controle-gastos"
+      - "com.example.tier=reporting"
+
+    networks:
+      - backend
+
+    # JasperReports Server é uma aplicação Java/Tomcat pesada.
+    # Reserve memória para que o JVM escale o heap corretamente.
+    mem_limit: "3g"
+    mem_reservation: "1g"
 
     restart: unless-stopped
 
