@@ -1,82 +1,169 @@
 BEGIN;
 
 -- ============================================================
--- 1. Preparar tabela de usuários para autenticação
+-- CATEGORIAS
 -- ============================================================
 
-ALTER TABLE usuarios
-ADD COLUMN IF NOT EXISTS senha_hash TEXT;
+CREATE TABLE IF NOT EXISTS categorias (
+id SERIAL PRIMARY KEY,
 
+```
+nome VARCHAR(100) NOT NULL,
+
+cor VARCHAR(20)
+    DEFAULT '#000000',
+
+created_at TIMESTAMP
+    DEFAULT CURRENT_TIMESTAMP
+```
+
+);
 
 -- ============================================================
--- 2. Preparar gastos para pertencerem a um usuário
+-- USUÁRIOS
 -- ============================================================
 
-ALTER TABLE gastos
-ADD COLUMN IF NOT EXISTS usuario_id INTEGER;
+CREATE TABLE IF NOT EXISTS usuarios (
+id SERIAL PRIMARY KEY,
 
+```
+nome VARCHAR(100) NOT NULL,
+
+email VARCHAR(100) NOT NULL UNIQUE,
+
+senha_hash TEXT,
+
+created_at TIMESTAMP
+    DEFAULT CURRENT_TIMESTAMP
+```
+
+);
 
 -- ============================================================
--- 3. Criar índice para consultas futuras por usuário
+-- GASTOS
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS gastos (
+id SERIAL PRIMARY KEY,
+
+```
+descricao VARCHAR(255) NOT NULL,
+
+valor NUMERIC(10, 2) NOT NULL,
+
+data DATE NOT NULL,
+
+categoria_id INTEGER,
+
+usuario_id INTEGER NOT NULL,
+
+created_at TIMESTAMP
+    DEFAULT CURRENT_TIMESTAMP,
+
+CONSTRAINT gastos_categoria_id_fkey
+    FOREIGN KEY (categoria_id)
+    REFERENCES categorias(id),
+
+CONSTRAINT gastos_usuario_id_fkey
+    FOREIGN KEY (usuario_id)
+    REFERENCES usuarios(id)
+    ON DELETE CASCADE
+```
+
+);
+
+-- ============================================================
+-- ÍNDICE
 -- ============================================================
 
 CREATE INDEX IF NOT EXISTS idx_gastos_usuario_id
 ON gastos(usuario_id);
 
+-- ============================================================
+-- CATEGORIAS INICIAIS
+-- ============================================================
+
+INSERT INTO categorias (nome, cor)
+VALUES
+('Alimentação', '#FF5733'),
+('Transporte', '#33FF57'),
+('Lazer', '#3357FF'),
+('Moradia', '#FF33F5'),
+('Saúde', '#33FFF5')
+ON CONFLICT DO NOTHING;
 
 -- ============================================================
--- 4. Garantir que o usuário Admin exista
+-- USUÁRIO ADMIN
 -- ============================================================
 
-INSERT INTO usuarios (nome, email)
-VALUES ('Admin', 'admin@email.com')
+INSERT INTO usuarios (
+nome,
+email
+)
+VALUES (
+'Admin',
+'[admin@email.com](mailto:admin@email.com)'
+)
 ON CONFLICT (email) DO NOTHING;
 
-
 -- ============================================================
--- 5. Associar gastos antigos ao Admin
+-- GASTOS DE EXEMPLO
 -- ============================================================
 
-UPDATE gastos
-SET usuario_id = (
-    SELECT id
-    FROM usuarios
-    WHERE email = 'admin@email.com'
+INSERT INTO gastos (
+descricao,
+valor,
+data,
+categoria_id,
+usuario_id
 )
-WHERE usuario_id IS NULL;
-
-
--- ============================================================
--- 6. Criar relacionamento entre gastos e usuários
--- ============================================================
-
-DO $$
-BEGIN
-
-    IF NOT EXISTS (
-        SELECT 1
-        FROM pg_constraint
-        WHERE conname = 'gastos_usuario_id_fkey'
-    ) THEN
-
-        ALTER TABLE gastos
-        ADD CONSTRAINT gastos_usuario_id_fkey
-        FOREIGN KEY (usuario_id)
-        REFERENCES usuarios(id)
-        ON DELETE CASCADE;
-
-    END IF;
-
-END $$;
-
-
--- ============================================================
--- 7. Agora que os dados antigos foram associados,
---    usuario_id pode ser obrigatório
--- ============================================================
-
-ALTER TABLE gastos
-ALTER COLUMN usuario_id SET NOT NULL;
-
+SELECT
+dados.descricao,
+dados.valor,
+dados.data,
+categoria.id,
+usuario.id
+FROM (
+VALUES
+(
+'Supermercado',
+150.00::NUMERIC(10, 2),
+DATE '2024-01-15',
+'Alimentação'
+),
+(
+'Uber',
+25.50::NUMERIC(10, 2),
+DATE '2024-01-16',
+'Transporte'
+),
+(
+'Cinema',
+45.00::NUMERIC(10, 2),
+DATE '2024-01-17',
+'Lazer'
+),
+(
+'Aluguel',
+1200.00::NUMERIC(10, 2),
+DATE '2024-01-01',
+'Moradia'
+),
+(
+'Farmácia',
+80.00::NUMERIC(10, 2),
+DATE '2024-01-18',
+'Saúde'
+)
+) AS dados(
+descricao,
+valor,
+data,
+categoria_nome
+)
+JOIN categorias categoria
+ON categoria.nome = dados.categoria_nome
+JOIN usuarios usuario
+ON usuario.email = '[admin@email.com](mailto:admin@email.com)';
 
 COMMIT;
