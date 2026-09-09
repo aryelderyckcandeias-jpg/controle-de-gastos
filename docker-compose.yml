@@ -6,7 +6,6 @@ services:
   # ============================================================
 
   web:
-    container_name: frontend-web
 
     build:
       context: .
@@ -30,7 +29,6 @@ services:
   # ============================================================
 
   backend:
-    container_name: controle-gastos-backend
 
     build:
       context: ./backend
@@ -75,7 +73,6 @@ services:
   # ============================================================
 
   postgres:
-    container_name: database-postgres
 
     image: postgres:13
 
@@ -95,7 +92,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
 
-      # Banco dedicado do JasperReports Server (criado no 1º boot).
+      
       JASPER_DB_USER: ${JASPER_DB_USER:-jasper}
       JASPER_DB_PASSWORD: ${JASPER_DB_PASSWORD:-jasperpass}
       JASPER_DB_NAME: ${JASPER_DB_NAME:-jasperserver}
@@ -119,7 +116,6 @@ services:
   # ============================================================
 
   redis:
-    container_name: redis-cache
 
     image: redis:7-alpine
 
@@ -151,7 +147,6 @@ services:
   # ============================================================
 
   pgadmin:
-    container_name: pgadmin-interface
 
     image: dpage/pgadmin4
 
@@ -170,24 +165,13 @@ services:
 
   # ============================================================
   # JASPERREPORTS SERVER (RELATÓRIOS)
-  #
-  # Servidor de relatórios (Java/Tomcat) - Community Edition.
-  # Usa uma imagem de comunidade mantida por terceiros no
-  # Docker Hub, já que a imagem oficial da Jaspersoft não é
-  # mais publicada lá (é preciso buildar manualmente).
-  #
-  # O repositório dos relatórios é o banco 'jasperserver',
-  # criado no primeiro boot pelo script ./init-jasper.sh
-  # dentro do Postgres da aplicação.
   # ============================================================
 
   jasperserver:
-    container_name: jasperserver-reports
 
     image: judahpaul/jasperserver:latest
 
     environment:
-      # Tipo e conexão com o banco de repositório.
       DB_TYPE: postgresql
       DB_HOST: postgres
       DB_PORT: "5432"
@@ -196,8 +180,6 @@ services:
       DB_PASSWORD: ${JASPER_DB_PASSWORD:-jasperpass}
 
     ports:
-      # Interface web do JasperReports Server.
-      # Acesse em http://localhost:8080/jasperserver
       - "8080:8080"
 
     depends_on:
@@ -210,8 +192,6 @@ services:
     networks:
       - backend
 
-    # JasperReports Server é uma aplicação Java/Tomcat pesada.
-    # Reserve memória para que o JVM escale o heap corretamente.
     mem_limit: "3g"
     mem_reservation: "1g"
 
@@ -223,7 +203,6 @@ services:
   # ============================================================
 
   nginx:
-    container_name: nginx-proxy
 
     image: nginx:alpine
 

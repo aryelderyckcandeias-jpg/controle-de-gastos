@@ -1,0 +1,16 @@
+# Garante que estes arquivos sempre sejam salvos/checados com LF,
+# mesmo em clones/checkouts feitos no Windows. Isso evita que
+# scripts de entrypoint (shebang #!/bin/bash) quebrem dentro
+# dos containers Linux.
+ 
+* text=auto eol=lf
+ 
+*.sh    text eol=lf
+*.sql   text eol=lf
+*.env   text eol=lf
+.env    text eol=lf
+Dockerfile text eol=lf
+*.conf  text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+ 
