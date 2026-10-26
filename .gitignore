@@ -1,1 +1,15 @@
+# Segredos: nunca versionar
 .env
+.env.*
+!.env.example
+
+# Dependências e logs
+node_modules/
+npm-debug.log*
+*.log
+
+# Editores e sistema operacional
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
